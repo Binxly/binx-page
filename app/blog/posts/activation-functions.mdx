@@ -1,0 +1,101 @@
+---
+title: 'Activation Functions and The Vanishing Gradient Problem'
+publishedAt: '2024-11-19'
+summary: 'Exploring activation functions and explaining the vanishing gradient problem.'
+tag: 'notes'
+---
+
+Deep learning has revolutionized the field of artificial intelligence, enabling breakthroughs in image recognition, natural language processing, and beyond. Yet, as impressive as these advancements are, they come with their own set of challenges. One of the most significant hurdles faced by deep neural networks is the vanishing gradient problem.
+
+## What is the vanishing gradient problem and how does it affect deep learning?
+
+The vanishing gradient problem emerges during the training of deep neural networks. It manifests when the gradients of the loss function—essentially the signals that guide the network's learning—become extremely small. This is particularly problematic during backpropagation, a process where these gradients are propagated backward through the network to update the weights of each layer based on some loss.
+
+In simpler terms, imagine that each layer of the network is a student in a large lecture hall, and the gradient is the teacher's voice. If the teacher's voice is too low, the students in the back rows (earlier layers) won't hear it clearly. As a result, these layers learn much more slowly than the ones closer to the teacher (later layers), leading the network to struggle to optimize its performance effectively.
+
+![Vanishing Gradient Problem](https://www.kdnuggets.com/wp-content/uploads/vanishing-gradient-problem-12.png)
+
+One of the major contributors to this issue lies in the nature of the activation functions used within these networks. Activation functions are mathematical equations that determine the output of a node, or "neuron," in the network. They introduce non-linearity into the system, allowing the network to learn and represent complex patterns. If all of the outputs from each node were linear functions, nothing would be learned by the network because all of its nodes would compute the same output. However, certain activation functions can exacerbate the vanishing gradient problem by compressing the outputs into narrow ranges, where the gradients diminish significantly. Let's explore these activation functions in detail to understand both their benefits and potential pitfalls in neural network design.
+
+## The Role of Activation Functions
+
+Activation functions are the lifeblood of neural networks, transforming inputs into outputs through a non-linear process. They are crucial for the network's ability to model complex data relationships. However, the choice of activation function can profoundly impact the network's training process.
+
+![Activation Functions](https://cdn.prod.website-files.com/614c82ed388d53640613982e/64a6b6518fddd62aa2605e17_how%20do%20activation%20functions%20work.webp)
+
+In the early days of neural networks, the sigmoid and tanh functions were popular choices. Unfortunately, these functions can squash input values into limited ranges—between 0 and 1 for sigmoid, and -1 and 1 for tanh. Within these ranges, the gradients of these functions can become very small, especially for inputs that fall far from zero. This squashing effect causes the gradients to shrink exponentially as they propagate backward through the network, culminating in the vanishing gradient problem for deep architectures.
+
+## Common Activation Functions and Their Impact
+
+To better understand activation functions as a whole, I decided to compile some notes based on the PyTorch documentation. Below, I will go into detail about some of the most commonly used activation functions and their characteristics:
+
+#### 1. Sigmoid
+
+- **Range**: (0, 1)
+- **Equation**: σ(x) = 1 / (1 + e^(-x))
+- **Impact**: Sigmoid functions were initially favored for their simplicity and ability to output probabilities. However, their tendency to produce very small gradients for large positive or negative inputs makes them less suitable for hidden layers in deep networks.
+![Sigmoid Function Graph](https://miro.medium.com/v2/resize:fit:970/1*Xu7B5y9gp0iL5ooBj7LtWw.png)
+
+#### 2. Tanh (Hyperbolic Tangent)
+
+- **Range**: (-1, 1)
+- **Equation**: tanh(x) = (2 / (1 + e^(-2x))) - 1
+- **Impact**: The tanh function is zero-centered, which can be advantageous for optimization over sigmoid. Despite this, it still suffers from the vanishing gradient problem due to its gradient saturation for extreme inputs.
+![Tanh Function Graph](https://production-media.paperswithcode.com/methods/Screen_Shot_2020-05-27_at_4.23.22_PM_dcuMBJl.png)
+
+#### 3. ReLU (Rectified Linear Unit)
+
+- **Range**: [0, ∞)
+- **Equation**: f(x) = max(0, x)
+- **Impact**: Specifically designed to solve the vanishing gradient problem, ReLU introduces a significant shift in neural network training. Unlike sigmoid and tanh, ReLU does not saturate for positive inputs, maintaining a gradient of 1, which helps prevent vanishing gradients. However, it can lead to dead neurons—units that never activate.
+![ReLU Function Graph](https://miro.medium.com/v2/resize:fit:357/1*oePAhrm74RNnNEolprmTaQ.png)
+
+#### 4. Leaky ReLU
+
+- **Range**: (-∞, ∞)
+- **Equation**: f(x) = max(0.01x, x)
+- **Impact**: By allowing a small, non-zero gradient for negative inputs, Leaky ReLU mitigates the dead neuron issue of standard ReLU, making it more robust for training deep networks. I tend to see this a bit more than standard ReLU.
+![Leaky ReLU Function Graph](https://miro.medium.com/v2/resize:fit:800/0*78wUADTW20bwqHvd.jpg)
+
+#### 5. Parametric ReLU (PReLU)
+
+- **Range**: (-∞, ∞)
+- **Equation**: f(x) = max(αx, x), where α is a learned parameter
+- **Impact**: PReLU adapts its negative slope during training, offering greater flexibility and potentially improved performance in complex models.
+![PReLU Function Graph](https://miro.medium.com/v2/resize:fit:1400/0*ChdsWvPFTyZ8kbbR.png)
+
+#### 6. ELU (Exponential Linear Unit)
+
+- **Range**: (-1, ∞)
+- **Equation**: 
+  - f(x) = x for x > 0
+  - f(x) = α(e^x - 1) for x ≤ 0, where α is typically set to 1
+- **Impact**: ELU provides smoother negative values, reducing bias shifts and enhancing learning speed compared to ReLU variants.
+![ELU Function Graph](https://miro.medium.com/v2/resize:fit:882/1*eNHGIO1Ww9gWL-dHz6JfyQ.png)
+
+#### 7. Softmax
+
+- **Range**: (0, 1) for each output, sum of outputs = 1
+- **Equation**: f(x_i) = e^(x_i) / Σ(e^(x_j)) for j=1 to N, where x_i is the input and N is the number of output neurons
+- **Impact**: Softmax transforms a set of numbers into probabilities. For example, if you input the numbers [2, 1, 0.1], Softmax might output [0.7, 0.2, 0.1], making them sum to 1. This makes it perfect for multi-class classification where you want to predict the probability of each possible class. Think of it like a "smart normalizer" that emphasizes larger values while suppressing smaller ones.
+![Softmax Function Graph](https://velog.velcdn.com/images/chiroya/post/b520fcca-ce29-4b02-9392-5de67767e6b4/image.png)
+
+#### 8. Swish
+
+- **Range**: (-∞, ∞)
+- **Equation**: f(x) = x * σ(x)
+- **Impact**: As a newer activation function, Swish benefits from smooth gradients and has shown promise in deep networks, potentially outperforming ReLU in some architectures.
+![Swish Function Graph](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSESfUSAuwDt-pf8MBkHm4Uys1Jhw7XnPKsuQ&s)
+
+### Selecting the Right Activation Function
+
+When faced with the inevitable task of choosing the right activation function, it's good to have an understanding of their function in order to properly dedicate a use. Their usage depends heavily on the task at hand and the network architecture. In short, given a particular machine learning task:
+
+- **Binary Classification**: Use **sigmoid** for output; **ReLU** or **Leaky ReLU** for hidden layers to avoid vanishing gradients.
+- **Multi-Class Classification**: Implement **softmax** for output, with **ReLU**, **Leaky ReLU**, or **Swish** in hidden layers.
+- **Regression**: Employ **linear activation** or **tanh** for bounded outputs, with **ReLU** or **Leaky ReLU** for hidden layers.
+- **CNNs**: **ReLU** or **Leaky ReLU** are preferred for their efficiency and gradient-preserving properties.
+- **RNNs, LSTMs, GRUs**: **Tanh** and **sigmoid** are common for managing sequence information; **Leaky ReLU** or **Swish** can help in deeper models.
+- **Deep Networks**: **ReLU**, **Leaky ReLU**, **PReLU**, and **Swish** are ideal for their robustness against vanishing gradients.
+
+The activation function plays a part in a larger strategy that includes careful network design and optimization techniques. As we continue to push the boundaries of what neural networks can achieve, a deeper understanding of activation functions and their impact on training dynamics remains an essential area of exploration.

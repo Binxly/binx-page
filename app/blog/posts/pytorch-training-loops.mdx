@@ -1,0 +1,279 @@
+---
+title: 'Exploring PyTorch: Key Concepts and Creating a Simple Training Loop'
+publishedAt: '2025-01-05'
+summary: 'A brief introduction to PyTorch and the creation of training loops.'
+blueskyUri: 'at://did:plc:hwczakx3ygz5am3mn2c5nl76/app.bsky.feed.post/3lezl2st32c2z'
+tag: 'edu'
+---
+
+## It's Everywhere: Pip Install Torch
+
+If you've been exploring the open source deep learning community, you've likely heard of [PyTorch](https://pytorch.org). Many of the [most popular open-source GenAI tools](https://github.com/steven2358/awesome-generative-ai) require you to install `torch`, `torchaudio`, and `torchvision` into your Python environment before you can run them. For an environment running a common older version of CUDA, CUDA v11.8, you'd use:
+
+```python
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+
+Or if you're on a more recent setup:
+
+```python
+pip3 install torch torchvision torchaudio
+```
+
+But what exactly is PyTorch, just how widely used is it, and how can we create our own machine learning models with it? Perhaps most importantly, what does it have to offer over other frameworks?
+
+## PyTorch's Beginnings and Rise
+
+PyTorch evolved from the [Torch framework](http://torch.ch), which was originally written in Lua. The PyTorch project aimed to bring Torch's flexibility and speed to the rapidly growing Python deep learning ecosystem, and it did so with great success! Since its launch in 2017, it has had an [explosive adoption rate](https://www.assemblyai.com/blog/pytorch-vs-tensorflow-in-2023/).
+
+![Papers With Code](https://i.imgur.com/FeYd4Jm.png)
+
+[PyTorch has become one of the top, go-to deep learning frameworks](https://paperswithcode.com/trends), and for good reason. It provides an intuitive yet flexible interface for constructing and training neural networks, while [delivering the performance needed](https://www.nvidia.com/en-us/glossary/pytorch/) for state-of-the-art research and production-ready deployments.
+
+![NVIDIA - PyTorch Features](https://www.nvidia.com/content/dam/en-zz/Solutions/glossary/data-science/pytorch/img-1.png)
+
+In this post, I'll try to cover the fundamentals of what you need to start exploring PyTorch yourself by creating a simple model and an example training loop using some of PyTorch's baked-in functionality. This is really exciting, because understanding this library will help you dive into generative tech and discover how simple it can be to uncover and explore many [real-world applications of machine learning](https://github.com/ritchieng/the-incredible-pytorch).
+
+# What is PyTorch?
+
+## Basics
+
+At its core, PyTorch is a Python library for building, using, and training neural networks. It offers a [powerful set of primitives](https://pytorch.org/docs/2.5/) such as:
+
+- Tensors (torch.Tensor)
+- Autograd (torch.autograd)
+- Modules (torch.nn.Module)
+- Optimizers (torch.optim)
+- Datasets and DataLoaders (torch.utils.data)
+
+Among many others, all of these tools help in the process of [tensor](https://en.wikipedia.org/wiki/Tensor) computation, or neural network creation and training. PyTorch also comes with the huge benefit of dynamic neural networks that can be [accelerated on GPUs](https://www.geeksforgeeks.org/how-to-use-gpu-acceleration-in-pytorch/#gpu-acceleration-in-pytorch), giving us massive performance gains across most, if not all ML tasks.
+
+## A Standard PyTorch Workflow
+
+A typical PyTorch workflow has a structure which goes from your data to building a model which can properly represent that data, and finally creating a training loop and iterating upon the model until it fits your data.
+
+![A Typical PyTorch Workflow Image](https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01_a_pytorch_workflow.png)
+
+# PyTorch's Core Concepts
+
+While the [PyTorch docs](https://pytorch.org/docs/stable/index.html) are quite extensive, there are a few core concepts that everything else is built upon, which makes approaching this framework for the sake of curiosity or experimentation much less daunting.
+
+## Tensors
+
+**Tensors** are the fundamental data structure in PyTorch: multi-dimensional arrays similar to NumPy arrays that can be used on GPUs to accelerate computation. In order to better understand Tensors, I HIGHLY recommend people watch [this video](https://youtu.be/f5liqUk0ZTw?si=M6vmHSeR00_B1TTV) by Dan Fleisch called [What's a Tensor?](https://youtu.be/f5liqUk0ZTw?si=M6vmHSeR00_B1TTV); It is a very easy-to-follow explanation, with a great breakdown for some intuition.
+
+From a simple understanding, we can break things down into a few more familiar concepts:
+
+1. **Scalars, Vectors, and Matrices:**
+   
+- **Scalar:** A single number, or a 0-dimensional tensor. Think of it as a lone data point.
+- **Vector:** A 1-dimensional tensor, like a list of numbers or a single row/column in a spreadsheet.
+- **Matrix:** A 2-dimensional tensor, akin to a grid of numbers, much like a table or a spreadsheet.
+
+2. **Higher-Dimensional Data - Tensors:**
+
+- **Rank-3 Tensor:** Imagine a cube filled with numbers. This is a 3-dimensional tensor.
+- **Beyond:** Tensors can have even higher dimensions (PyTorch has an N-Dimensional Tensor implementation), though this becomes increasingly hard to visualize.
+
+![PyTorch Tensors](http://rodolphe-vaillant.fr/images/2022-04/paste-6c268f110e7f5093496294c0f778667707a84e83.jpg)
+
+Please note that “[this is a seriously limited and oversimplified definition](http://rodolphe-vaillant.fr/entry/139/tensor-basic-definition)” of a tensor. I'd recommend at least watching part of the video mentioned above, [Dan Fleisch - What's a Tensor?](https://youtu.be/f5liqUk0ZTw?si=M6vmHSeR00_B1TTV), for a better overview.
+
+I mentioned that PyTorch implements N-Dimensional Tensors; What this means is that a Tensor can have as many dimensions as necessary in order to appropriately model provided data.
+
+With all of this being said, creating a tensor with PyTorch can be very simple:
+
+```python
+import torch
+
+x = torch.randn(3, 4)  # random 3x4 tensor
+```
+
+If we print `x`, we can see the raw values which were added to our tensor, like so:
+
+![Creating a Tensor in PyTorch - Google Colab - Printing a Tensor](https://i.imgur.com/9yOYgVX.png)
+
+## Autograd
+
+[Autograd](https://pytorch.org/tutorials/beginner/introyt/autogradyt_tutorial.html) is PyTorch's [automatic differentiation](https://en.wikipedia.org/wiki/Automatic_differentiation) engine. It's a feature that makes training neural networks not just possible, but efficient. What does [Autograd](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html) actually do? In essence, it tracks all the operations that are performed on tensors, and it builds a [computational graph](https://www.geeksforgeeks.org/computational-graphs-in-deep-learning/) on the fly, behind the scenes. This graph is then used to compute [gradients](https://machinelearningmastery.com/gradient-in-machine-learning/), which is how the model finds the optimal values necessary to fit our data distributions.
+
+In simpler terms: every time you perform an operation on a tensor, Autograd is there, quietly taking notes. When it's time to update your model's parameters, it uses these notes to [calculate how each parameter needs to change](https://pytorch.org/tutorials/beginner/introyt/autogradyt_tutorial.html) to improve your model's prediction accuracy. This process is known as [backpropagation](<https://www.ibm.com/think/topics/backpropagation#:~:text=Backpropagation%20is%20a%20machine%20learning,(AI)%20“learn.”>).
+
+The computational graph is created dynamically during the execution of your code, which allows you to change your model's architecture or operations, and Autograd will adapt seamlessly- a big advantage for quick experimentation.
+
+As a simple example to illustrate how Autograd works, we can see it keep track of our model's gradients below:
+
+![Google Colab - AutoGrad in Action - Calculating Gradients](https://i.imgur.com/OgFbhLB.png)
+
+In this example:
+
+1. We create a tensor `x` with `requires_grad=True`, which tells Autograd to track operations on this tensor.
+2. We then perform some operation and finally call `backward()` on `z` to compute the gradients.
+3. The result is stored in `x.grad`, which gives us the gradient of `z` with respect to `x`.
+
+## torch.nn
+
+When it comes to actually constructing the layers for our neural networks, PyTorch provides the [`nn` module](https://pytorch.org/docs/stable/nn.html). `torch.nn` is a robust framework for constructing and managing layers and operations within our model, simplifying the process of defining our model's architecture. At the heart of this module is [`nn.Module`](https://pytorch.org/docs/stable/generated/torch.nn.Module.html), which acts as a blueprint for you to use when creating your own models.
+
+[`nn.Module`](https://pytorch.org/docs/stable/generated/torch.nn.Module.html) is a base class that you can subclass to define your neural network architecture. It handles a lot of the boilerplate for you, such as [parameter initialization](https://d2l.ai/chapter_builders-guide/init-param.html) and [forward pass execution](https://amassivek.github.io/sigprop/learninginaforwardpass.html). This makes it easier to focus on the design of your network without getting bogged down by too many details.
+
+To give us a clearer picture, let's look at a simple example of a two-layer **Multi-Layer Perceptron (MLP)** using the `nn.Module` API:
+
+```python
+import torch.nn as nn
+
+class MLP(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super().__init__()
+        self.hidden = nn.Linear(input_size, hidden_size)
+        self.output = nn.Linear(hidden_size, output_size)
+      
+    def forward(self, x):
+        x = torch.relu(self.hidden(x))
+        x = self.output(x)
+        return x
+```
+
+In our class, that inherits from `nn.Module`, we set up the layers of the network: one [hidden layer](https://en.wikipedia.org/wiki/Hidden_layer#:~:text=An%20MLP%20without%20any%20hidden,updated%20during%20training%20via%20backpropagation.) and one [output layer](https://www.enthought.com/blog/neural-network-output-layer/) (which are both linear transformations) in our constructor. The `forward` method is our forward pass, where we apply a [ReLU activation function](https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/) (`torch.relu`) to the hidden layer's output.
+
+Subclasses of `nn.Module` can contain any number of layers and operations, and you can nest `nn.Module` subclasses to create very complex architectures. This modularity is one of PyTorch's strengths, allowing you to build sophisticated models by combining simple components in a [pythonic](https://www.lenovo.com/us/en/glossary/pythonic/?orgRef=https%253A%252F%252Fwww.google.com%252F) way.
+
+## Optimizers
+
+[Optimizers](https://pytorch.org/docs/stable/optim.html) play a role in updating the model's parameters to minimize the [loss function](https://www.datacamp.com/tutorial/loss-function-in-machine-learning). PyTorch offers a [comprehensive suite](https://pytorch.org/docs/stable/optim.html) of optimization algorithms through its [`torch.optim` module](https://pytorch.org/docs/stable/optim.html), each tailored to different types of models and training scenarios.
+
+Optimizers work by adjusting the weights of your model based on the computed gradients, which are provided by [Autograd](https://pytorch.org/tutorials/beginner/introyt/autogradyt_tutorial.html). The choice of optimizer can significantly impact the speed and quality of your model's [convergence](https://machine-learning.paperspace.com/wiki/convergence), making it an important consideration in your training loop's setup.
+
+One of the most popular optimizers is [Adam](https://www.analyticsvidhya.com/blog/2023/09/what-is-adam-optimizer/#:~:text=The%20Adam%20optimizer%2C%20short%20for,Stochastic%20Gradient%20Descent%20with%20momentum.), which stands for [Adaptive Moment Estimation](https://www.analyticsvidhya.com/blog/2023/09/what-is-adam-optimizer/#:~:text=The%20Adam%20optimizer%2C%20short%20for,Stochastic%20Gradient%20Descent%20with%20momentum.). It's known for its [efficiency and performance](https://medium.com/@weidagang/demystifying-the-adam-optimizer-in-machine-learning-4401d162cb9e) across a wide range of tasks, thanks to its ability to adapt the [learning rate](https://en.wikipedia.org/wiki/Learning_rate) for each parameter dynamically throughout the model's training process.
+
+Here's a quick example of how we can set up the Adam optimizer for our simple MLP model:
+
+```python
+import torch.optim as optim
+
+model = MLP(10, 100, 2)  
+optimizer = optim.Adam(model.parameters(), lr=1e-3)
+```
+
+> Related: See [Machine Learning Mastery's - "Understanding the Dynamics of Learning Rate on Deep Learning Neural Networks"](https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/) for an in-depth breakdown of learning rates.
+
+The `torch.optim` module includes other optimizers like [SGD (Stochastic Gradient Descent)](https://en.wikipedia.org/wiki/Stochastic_gradient_descent), [RMSprop](https://www.deepchecks.com/glossary/rmsprop/), [and more](https://pytorch.org/docs/stable/optim.html); Each of these optimizers has its own strengths and applicable scenarios. Choosing the right optimizer often involves experimentation, and will depend on factors such as the [complexity](https://www.geeksforgeeks.org/model-complexity-overfitting-in-machine-learning/#what-is-model-complexity) of your model, the size of your dataset, and [the specific problem you're tackling](https://machinelearningmastery.com/types-of-learning-in-machine-learning/).
+
+## Data Loaders
+
+PyTorch's [`torch.utils.data` module](https://pytorch.org/docs/stable/data.html) provides tools to handle datasets and create [iterable data loaders](https://stackoverflow.com/questions/71269516/dataloaders-wrapping-an-iterable-over-the-dataset-means). This is especially useful for managing large datasets and ensuring efficient data shuffling and batching.
+
+Here's a simple example, using some randomly generated data, of how you could create a data loader. Here, we will use PyTorch's built-in dataset class and data loader functionality:
+
+```python
+import torch
+from torch.utils.data import DataLoader, TensorDataset
+
+X = torch.randn(1000, 10)
+y = torch.randint(0, 2, (1000,))
+
+dataset = TensorDataset(X, y)
+train_loader = DataLoader(dataset, batch_size=32, shuffle=True)
+
+for x_batch, y_batch in train_loader:
+    print(x_batch.shape, y_batch.shape)
+    break
+```
+
+1. **Example Data:** Here, `X` is a tensor containing 1000 samples, each with 10 features. `y` is a tensor of 1000 binary labels.
+2. **TensorDataset:** The `TensorDataset` wraps the feature tensor `X` and label tensor `y` together, making it easy to access both inputs and targets simultaneously.
+3. **DataLoader:** The `DataLoader` takes the dataset and provides an [iterable](https://www.pythonlikeyoumeanit.com/Module2_EssentialsOfPython/Iterables.html) over the data, where `batch_size=32` specifies that each batch contains 32 samples. The `shuffle=True` option ensures the data is shuffled at the start of each epoch.
+4. **Batch Processing in Training Loop:** In the training loop, `for x_batch, y_batch in train_loader` iterates over the data loader, yielding batches of `x_batch` (features) and `y_batch` (labels) that are used in the forward and backward passes.
+
+By using `TensorDataset` and `DataLoader`, PyTorch abstracts away much of the complexity involved in data handling, providing a straightforward interface for iterating over our batches of data. Because of this, we can focus much more on optimizing and improving our model's performance, rather than worry too much about handling *everything* ourselves.
+
+# Putting it All Together
+
+## Making a PyTorch Training Loop
+
+Now that we've gone over the core concepts of PyTorch, we can begin to see how they fit together in a [simple training loop](https://machinelearningmastery.com/creating-a-training-loop-for-pytorch-models/). This is where all of the magic happens, and where we transform raw data into a trained model ready to make predictions on new data.
+
+### What a Training Loop Does
+
+Here's a quick breakdown of what a [PyTorch training loop](https://machinelearningmastery.com/creating-a-training-loop-for-pytorch-models/) involves:
+
+1. **Define your model using `nn.Module`:** Start by setting up your neural network architecture. This involves creating a class that subclasses `nn.Module` and defines the layers of your model, as well as what operations your model can perform.
+
+```python
+class MLP(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super().__init__()
+        self.hidden = nn.Linear(input_size, hidden_size)
+        self.output = nn.Linear(hidden_size, output_size)
+      
+    def forward(self, x):
+        x = torch.relu(self.hidden(x))
+        x = self.output(x)
+        return x
+```
+
+2. **Specify a loss function and optimizer:** Choose a loss function that quantifies how well your model is performing, like [`nn.CrossEntropyLoss`](https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html) for classification tasks. Then, select an optimizer from [`torch.optim`](https://pytorch.org/docs/stable/optim.html) to update your model's parameters based on the computed [gradients](https://machinelearningmastery.com/gradient-in-machine-learning/).
+
+```python
+model = MLP(10, 100, 2)  
+optimizer = optim.Adam(model.parameters(), lr=1e-3)
+```
+
+3. **Iterate over training data:** Use a [data loader](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html) to feed [batches of data](https://machinelearningmastery.com/gentle-introduction-mini-batch-gradient-descent-configure-batch-size/) into your model. This helps in managing memory efficiently and speeds up the training process.
+	1. See the Data Loader section above for a brief explanation and example code snippet.
+	2. Read more about [Datasets & DataLoaders](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html) from the [PyTorch Docs](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html).
+   
+4. **For each batch from our data:**
+   - **Perform a forward pass to compute predictions:** Pass your input data through the model to get predictions.
+   - **Calculate the loss:** Use the [loss function](https://www.ibm.com/think/topics/loss-function) to measure how far off the predictions are from the actual labels.
+   - **Perform a backward pass to compute gradients:** [Call `backward()` on the loss](https://pytorch.org/docs/stable/generated/torch.Tensor.backward.html) to compute the gradients of the loss with respect to the model's parameters.
+   - **Update model parameters with the optimizer:** Use the [optimizer](https://pytorch.org/docs/stable/optim.html) to adjust the parameters in the direction that reduces the loss.
+
+5. **Rinse and repeat:** Just like that, we continue this process for a specified number of epochs, or until your model reaches an acceptable level of performance.
+
+### Training Loop - Code Example
+
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+model = MLP(10, 100, 2)
+
+criterion = nn.CrossEntropyLoss() # loss
+optimizer = optim.Adam(model.parameters())
+
+for epoch in range(100):
+    for x_batch, y_batch in train_loader:
+
+        y_pred = model(x_batch)
+        loss = criterion(y_pred, y_batch)
+        
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+```
+
+From the code sample above, we illustrate all of the steps involved in a simple PyTorch training loop, which facilitates our ability to train models on our own data:
+
+1. **Import Libraries:** Lines 1-3 import the necessary PyTorch libraries for building and training models.
+2. **Define the Model:** We initialize the MLP model with specified input, hidden, and output sizes, using `model = MLP(10, 100, 2)`.
+3. **Define Loss Function and Optimizer:** Next, we set up the loss function to use (`nn.CrossEntropyLoss`) and the optimizer with `optim.Adam(model.parameters())`.
+4. **Training Loop:** We use a `for` loop to go over a specified number of epochs (`epoch in range(100)`), repeating our operations as many times as declared.
+5. **Data Loading:** Inside of our training loop, we use another `for` loop which iterates over the batches of data provided by our data loader, `train_loader`. See the Data Loaders section and example snippet for more on how this is handled.
+6. **Forward Pass and Loss Calculation:** Compute the model's predictions (`model(x_batch)`), and calculate the loss for the current batch (`criterion(y_pred, y_batch)`).
+7. **Backward Pass and Parameter Update:** Finally, we clear old gradients by dropping them to 0 (`optimizer.zero_grad()`), compute new gradients with `loss.backward()`, and update the model's parameters with `optimizer.step()`.
+
+> **Related Note:** If you find yourself still wondering about the difference between a batch (dealing with our data), and an "epoch". Here's [another great article by Machine Learning Mastery](https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/) that breaks this down!
+
+# Conclusion
+
+In this post, we have only scratched the surface of the fundamental components of PyTorch. I've shown how basic concepts can come together to form a simple **training loop**. We've seen how PyTorch's intuitive design makes deep learning both accessible and efficient. It empowers researchers and hobbyist developers alike, letting us use powerful modern deep learning techniques.
+
+## Just a Training Loop
+
+Our exploration here has focused solely on a **simple PyTorch training loop**, using throwaway data. Training loops are only one stage of model development; An equally important step in creating a good model is *testing / validating your model's predictions*, ensuring that your model generalizes well to unseen data. In a future post, I intend to go over the creation of a testing loop, and will write more about how to evaluate model performance, allowing you to iterate on everything and create even better models, i.e. *make more accurate predictions*.
+
+If you've made it this far, thank you for reading. I hope everyone had a great New Year.
+
+// January 5th, 2025
