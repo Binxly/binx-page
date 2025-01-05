@@ -10,6 +10,8 @@ My portfolio and blog site built with Next.js, featuring MDX blog posts, SEO opt
 │   ├── about/           # Professional background
 │   ├── blog/            # Blog posts and related content
 │   ├── components/      # Reusable components
+│   ├── og/              # OpenGraph
+│   ├── rss/             # RSS feed functionality
 │   └── global.css       # Global styles
 ├── public/             # Static assets
 ```
