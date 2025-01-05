@@ -8,11 +8,10 @@ My portfolio and blog site built with Next.js, featuring MDX blog posts, SEO opt
 .
 ├── app/
 │   ├── about/           # Professional background
-│   ├── blog/            # Blog posts and utilities
+│   ├── blog/            # Blog posts and related content
 │   ├── components/      # Reusable components
 │   └── global.css       # Global styles
 ├── public/             # Static assets
-└── content/           # MDX blog posts
 ```
 
 
