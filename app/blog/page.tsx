@@ -2,7 +2,14 @@ import { BlogPosts } from 'app/components/allPosts'
 
 export const metadata = {
   title: 'Binx Bytes',
-  description: 'Read my blog.',
+  description: 'This is a place where I write about things I am learning, things I am thinking about, or things I find interesting.',
+  keywords: [
+    'tech blog', 
+    'software engineering blog', 
+    'AI development', 
+    'programming tutorials', 
+    'tech articles'
+  ],
 }
 
 export default function Page() {
