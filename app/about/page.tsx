@@ -5,33 +5,32 @@ export default function Page() {
       company: "LCG Inc",
       period: "Oct 2024 - Present",
       bullets: [
-        "Developing and implementing AI-driven solutions with Python, resulting in significant workflow optimization",
-        "Managing cloud infrastructure for production GenAI models and API endpoints",
-        "Leveraging enterprise AI platforms including Microsoft Azure AI Studio, AWS Bedrock, and AWS SageMaker",
-        "Administering Microsoft Active Directory environment, including software deployment, group policies, and access permissions"
+        "Engineering serverless applications with Azure Functions and cloud platform resources",
+        "Developing RAG applications and vector search solutions using Microsoft Azure",
+        "Building AI-driven tools that significantly reduce client workloads",
+        "Managing cloud infrastructure for GenAI models across Azure and AWS Bedrock",
+        "Administering Microsoft Active Directory environment and device management"
       ]
     },
     {
-      title: "Level 2 Technology Specialist",
+      title: "Level 2 Desktop Support Technician",
       company: "LCG Inc",
       period: "Nov 2023 - Oct 2024",
       bullets: [
-        "Resolved complex technical issues using enterprise solutions including Cylance, MobileIron, and Active Directory",
-        "Streamlined IT operations through ServiceNow ticket management and creation of Standard Operating Procedures (SOPs)",
-        "Developed documentation for Microsoft Azure API endpoint creation, enabling standardized deployment processes",
-        "Managed Active Directory user accounts, group policies, and access permissions"
+        "Provided level 2 technical support for client software, hardware, and network devices",
+        "Administered client domain and security reporting for device tracking procedures"
       ]
     },
     {
       title: "Fine-Tuner and GenAI Consultant",
       company: "BINXNET LLC",
-      period: "Jun 2021 - Oct 2023",
+      period: "Jun 2021 - Oct 2024",
       bullets: [
-        "Engineered agentic data pipelines for RAG applications and custom generative diffusion workflows",
+        "Developed agentic data pipelines for offline RAG applications and custom generative diffusion workflows",
         "Gained hands-on experience in Python, debugging, Git, Diffusers, and PyTorch",
         "Offered generative model fine-tuning services, processing large amounts of data and evaluating GenAI models",
         "Organized community events, encouraging open-source innovation and collaborative research",
-        "Provided extensive GenAI consultations for a variety of clients"
+        "Provided extensive GenAI consultations for a variety of clients across many unique use cases"
       ]
     },
     {
@@ -40,18 +39,19 @@ export default function Page() {
       period: "Jan 2016 - Jan 2017",
       bullets: [
         "Provided technical support to faculty and staff of District 5 schools as part of an accelerated student program",
-        "Managed user accounts and performed network device troubleshooting across multiple school locations",
-        "Gained helpdesk ticketing software experience, tracking and resolveing technical issues efficiently"
+        "Managed user accounts and gained experience troubleshooting network devices",
+        "Gained experience with helpdesk ticketing software"
       ]
     }
   ]
 
   const skills = [
-    "Python", "GenAI", "Machine Learning",
+    "Python", "GenAI", "Azure Functions",
     "Cloud Services (AWS/Azure)", "Active Directory",
-    "Jupyter Notebooks", "Data Management",
-    "Windows", "Arch Linux", "Ubuntu",
-    "Cisco Networking Hardware", "Next.js"
+    "RAG Applications", "Vector Search",
+    "PyTorch", "Diffusers", "Git",
+    "Windows", "Arch Linux", "Ubuntu", "Next.js",
+    "Serverless Architecture"
   ]
 
   const education = {
@@ -82,11 +82,12 @@ export default function Page() {
 
   const interests = [
     "Writing", "Digital Art", "Game Development", 
-    "Personal Knowledge Management",
+    "Personal Knowledge Management", "Star Trek"
   ]
 
   const contact = {
-    email: "contact@binx.page",
+    github: "https://github.com/Binxly",
+    email: "contact@binx.page"
   }
 
   return (
@@ -162,6 +163,11 @@ export default function Page() {
         <div>
           <h2 className="mb-4 text-xl font-medium tracking-tight">Certifications</h2>
           <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400">
+            <li className="mb-2">
+              <a href={contact.bootdev} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
+                Boot.dev Profile - Learning Path Progress
+              </a>
+            </li>
             {certifications.map((cert, index) => (
               <li key={index} className="mb-2">
                 <a 
@@ -190,6 +196,22 @@ export default function Page() {
               </span>
             ))}
           </div>
+        </div>
+
+        <div>
+          <h2 className="mb-4 text-xl font-medium tracking-tight">Contact & Social</h2>
+          <ul className="list-none space-y-2 text-neutral-600 dark:text-neutral-400">
+            <li>
+              <a href={contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${contact.email}`} className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
+                {contact.email}
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
