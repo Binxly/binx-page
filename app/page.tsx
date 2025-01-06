@@ -18,3 +18,14 @@ export default function Page() {
     </section>
   )
 }
+
+export const metadata = {
+  keywords: [
+    'AI engineer', 
+    'deep learning', 
+    'GenAI', 
+    'software development', 
+    'Python developer',
+    'open source'
+  ],
+}

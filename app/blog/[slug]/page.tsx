@@ -5,6 +5,23 @@ import { baseUrl } from 'app/sitemap'
 import { TableOfContents } from 'app/components/TableOfContents'
 import { CommentSection } from 'app/components/bluesky-comments'
 
+const tagKeywords = {
+  edu: [
+    'educational content',
+    'programming tutorial',
+    'technical guide',
+    'learning resources',
+    'coding education'
+  ],
+  notes: [
+    'technical notes',
+    'development insights',
+    'programming thoughts',
+    'coding journal',
+    'tech observations'
+  ]
+}
+
 export async function generateStaticParams() {
   let posts = getBlogPosts()
 
@@ -29,6 +46,9 @@ export function generateMetadata({ params }) {
     ? image
     : `${baseUrl}/og?title=${encodeURIComponent(title)}`
 
+  const tag = post.metadata.tag
+  const tagSpecificKeywords = tagKeywords[tag] || []
+
   return {
     title,
     description,
@@ -50,6 +70,13 @@ export function generateMetadata({ params }) {
       description,
       images: [ogImage],
     },
+    keywords: [
+      ...tagSpecificKeywords,
+      'blog post',
+      'technical writing',
+      post.metadata.title.toLowerCase(),
+      `${tag} content`
+    ],
   }
 }
 

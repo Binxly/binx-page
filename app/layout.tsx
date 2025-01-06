@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: '%s | Binx.Page',
   },
   description: 'Personal website of Zac Bagley.',
-  keywords: ['software engineer', 'web development', 'blog', 'tech', 'programming', 'Zac Bagley', 'portfolio'],
+  keywords: ['Zac Bagley', 'software engineer', 'portfolio', 'tech'],
   openGraph: {
     title: 'Binx.Page',
     description: 'Personal website of Zac Bagley.',
