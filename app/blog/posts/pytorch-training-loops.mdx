@@ -97,15 +97,13 @@ If we print `x`, we can see the raw values which were added to our tensor, like 
 
 [Autograd](https://pytorch.org/tutorials/beginner/introyt/autogradyt_tutorial.html) is PyTorch's [automatic differentiation](https://en.wikipedia.org/wiki/Automatic_differentiation) engine. It's a feature that makes training neural networks not just possible, but efficient. What does [Autograd](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html) actually do? In essence, it tracks all the operations that are performed on tensors, and it builds a [computational graph](https://www.geeksforgeeks.org/computational-graphs-in-deep-learning/) on the fly, behind the scenes. This graph is then used to compute [gradients](https://machinelearningmastery.com/gradient-in-machine-learning/), which is how the model finds the optimal values necessary to fit our data distributions.
 
-In simpler terms: every time you perform an operation on a tensor, Autograd is there, quietly taking notes. When it's time to update your model's parameters, it uses these notes to [calculate how each parameter needs to change](https://pytorch.org/tutorials/beginner/introyt/autogradyt_tutorial.html) to improve your model's prediction accuracy. This process is known as [backpropagation](<https://www.ibm.com/think/topics/backpropagation#:~:text=Backpropagation%20is%20a%20machine%20learning,(AI)%20“learn.”>).
+Put simply: Autograd helps [calculate how each parameter needs to change](https://pytorch.org/tutorials/beginner/introyt/autogradyt_tutorial.html) to improve your model's prediction accuracy. This process is known as [backpropagation](<https://www.ibm.com/think/topics/backpropagation#:~:text=Backpropagation%20is%20a%20machine%20learning,(AI)%20“learn.”>).
 
 The computational graph is created dynamically during the execution of your code, which allows you to change your model's architecture or operations, and Autograd will adapt seamlessly- a big advantage for quick experimentation.
 
-As a simple example to illustrate how Autograd works, we can see it keep track of our model's gradients below:
-
 ![Google Colab - AutoGrad in Action - Calculating Gradients](https://i.imgur.com/OgFbhLB.png)
 
-Inside of Google Colab, I've put together a basic example of how gradients get updated:
+Inside of Google Colab, I've put together a basic example of how gradients get updated thanks to Autograd:
 
 1. **Make a Tensor:** We create a tensor `x` with `requires_grad=True`, which tells Autograd to track operations on this tensor.
 2. **Perform Operation:** We then perform some operation, saving the results to a new variable `z`, and we call `backward()` on `z` to compute the gradients.
