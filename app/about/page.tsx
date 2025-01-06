@@ -88,7 +88,7 @@ export default function Page() {
   const contact = {
     github: "https://github.com/Binxly",
     email: "contact@binx.page",
-    bootdev: "#"
+    bootdev: "https://www.boot.dev/u/binx"
   }
 
   return (
