@@ -107,9 +107,9 @@ As a simple example to illustrate how Autograd works, we can see it keep track o
 
 In this example:
 
-1. We create a tensor `x` with `requires_grad=True`, which tells Autograd to track operations on this tensor.
-2. We then perform some operation and finally call `backward()` on `z` to compute the gradients.
-3. The result is stored in `x.grad`, which gives us the gradient of `z` with respect to `x`.
+1. **Make a Tensor:** We create a tensor `x` with `requires_grad=True`, which tells Autograd to track operations on this tensor.
+2. **Perform Operation:** We then perform some operation, saving the results to a new variable `z`, and we call `backward()` on `z` to compute the gradients.
+3. **Display Gradients:** The result is stored in `x.grad`; Printing this gives us the gradient of `z` with respect to `x`.
 
 ## torch.nn
 
