@@ -305,3 +305,16 @@ h6[id] {
     px-1.5 py-0.5 rounded-md
     text-sm font-medium;
 }
+
+/* Mobile ToC styles */
+.toc-dropdown {
+  @apply w-full bg-neutral-50 dark:bg-neutral-900 
+    rounded-lg border border-neutral-200 dark:border-neutral-700
+    shadow-sm transition-all duration-200;
+}
+
+.toc-dropdown-button {
+  @apply w-full text-left px-4 py-3
+    hover:bg-neutral-100 dark:hover:bg-neutral-800
+    transition-colors duration-200;
+}

@@ -87,8 +87,6 @@ export default function Blog({ params }) {
     notFound()
   }
 
-  // console.log('Bluesky URI:', post.metadata.blueskyUri);
-
   return (
     <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row justify-between">
@@ -102,6 +100,12 @@ export default function Blog({ params }) {
               {formatDate(post.metadata.publishedAt)}
             </p>
           </div>
+          
+          {/* Mobile ToC placed here */}
+          <div className="lg:hidden">
+            <TableOfContents content={post.content} />
+          </div>
+          
           <article className="prose prose-lg dark:prose-invert">
             <CustomMDX source={post.content} />
           </article>
