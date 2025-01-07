@@ -13,21 +13,19 @@ export function TableOfContents({ content }: { content: string }) {
   const [toc, setToc] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    // Split content into lines
     const lines = content.split('\n')
     const tocItems: TocItem[] = []
     let insideCodeBlock = false
 
     lines.forEach(line => {
-      // Check if line starts/ends code block
       if (line.trim().startsWith('```')) {
         insideCodeBlock = !insideCodeBlock
         return
       }
 
-      // Only process headers outside code blocks
       if (!insideCodeBlock) {
         const match = line.match(/^#{1,6}\s+(.+)$/)
         if (match) {
@@ -42,7 +40,6 @@ export function TableOfContents({ content }: { content: string }) {
       }
     })
 
-    // Build hierarchy
     const buildHierarchy = (items: TocItem[]): TocItem[] => {
       const result: TocItem[] = []
       const stack: TocItem[] = []
@@ -66,7 +63,6 @@ export function TableOfContents({ content }: { content: string }) {
 
     setToc(buildHierarchy(tocItems))
 
-    // Set up intersection observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,7 +77,6 @@ export function TableOfContents({ content }: { content: string }) {
       }
     )
 
-    // Observe all section headings
     document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').forEach((heading) => {
       observer.observe(heading)
     })
@@ -131,11 +126,47 @@ export function TableOfContents({ content }: { content: string }) {
   )
 
   return (
-    <nav className="toc-nav">
-      <h2 className="font-semibold mb-4 text-lg">Table of Contents</h2>
-      <ul className="toc-list">
-        {toc.map((item) => renderTocItem(item))}
-      </ul>
-    </nav>
+    <>
+      <div className="block lg:hidden w-full mb-8">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full flex items-center justify-between p-3 
+            bg-neutral-50 dark:bg-neutral-900
+            border border-neutral-200 dark:border-neutral-800
+            rounded-lg transition-colors"
+          aria-expanded={isOpen}
+        >
+          <span className="text-neutral-800 dark:text-neutral-200 text-sm font-medium">
+            Table of Contents
+          </span>
+          <svg
+            className={`w-4 h-4 text-neutral-500 dark:text-neutral-400 transition-transform ${
+              isOpen ? 'rotate-180' : ''
+            }`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        
+        {isOpen && (
+          <div className="mt-2 p-3 bg-neutral-50 dark:bg-neutral-900 
+            border border-neutral-200 dark:border-neutral-800 rounded-lg">
+            <ul className="toc-list">
+              {toc.map((item) => renderTocItem(item))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <nav className="hidden lg:block toc-nav">
+        <h2 className="font-semibold mb-4 text-lg">Table of Contents</h2>
+        <ul className="toc-list">
+          {toc.map((item) => renderTocItem(item))}
+        </ul>
+      </nav>
+    </>
   )
 } 
