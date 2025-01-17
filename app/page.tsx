@@ -1,16 +1,39 @@
 import { RecentPosts } from './components/recentPosts'
+import { Typewriter } from "./components/typewriter"
+import { AnimatedGridPattern } from "./components/ui/animated-grid-pattern"
 
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        Zac Bagley
-      </h1>
+
+      <AnimatedGridPattern
+          numSquares={33}
+          maxOpacity={0.1}
+          duration={3}
+          repeatDelay={1}
+          className="[mask-image:radial-gradient(4000px_circle_at_center,transparent,white)] fixed inset-0 h-full w-full -z-10"
+        />
+
+      <div className="mb-8 text-[1.6rem] sm:text-2xl font-semibold tracking-tighter text-center sm:text-left">
+        <span>Hi, my name is Zac, and I am a </span>
+        <br className="sm:hidden" />
+        <Typewriter 
+          text={[
+            "full-stack developer.",
+            "GenAI researcher.",
+            "digital creator."
+          ]}
+          className="text-violet-400"
+          speed={60}
+          waitTime={1500}
+        />
+      </div>
       <p className="mb-4">
         {`Passionate about deep learning and software engineering. 
         Building accessible GenAI applications with a focus on open-source 
         technologies and transparent data practices. Committed to advancing 
-        digital equality through responsible AI development and knowledge sharing.`}
+        technological accessibility through responsible AI development and knowledge sharing. 
+        Learning more every day.`}
       </p>
       <div className="my-8">
         <RecentPosts />

@@ -4,6 +4,7 @@ import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import { TableOfContents } from 'app/components/TableOfContents'
 import { CommentSection } from 'app/components/bluesky-comments'
+import { AnimatedGridPattern } from "../../components/ui/animated-grid-pattern"
 
 const tagKeywords = {
   edu: [
@@ -92,6 +93,15 @@ export default function Blog({ params }) {
       <div className="flex flex-col lg:flex-row justify-between">
         {/* Main content */}
         <section className="w-full lg:w-3/4 xl:w-4/5">
+
+          <AnimatedGridPattern
+          numSquares={33}
+          maxOpacity={0.1}
+          duration={3}
+          repeatDelay={1}
+          className="[mask-image:radial-gradient(4000px_circle_at_center,transparent,white)] fixed inset-0 h-full w-full -z-10"
+        />
+
           <h1 className="title font-semibold text-2xl sm:text-3xl md:text-4xl tracking-tighter mb-4">
             {post.metadata.title}
           </h1>

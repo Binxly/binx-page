@@ -1,3 +1,34 @@
+import { Metadata } from 'next'
+import { AnimatedGridPattern } from "../components/ui/animated-grid-pattern"
+
+export const metadata: Metadata = {
+  title: 'About Me | Binx',
+  description: 'Full Stack Developer and GenAI Researcher specializing in diffusion models and AI-driven applications.',
+  keywords: [
+    'Full Stack Developer',
+    'GenAI',
+    'Machine Learning',
+    'AI Applications',
+    'Cloud Computing',
+    'Python',
+    'TypeScript',
+    'React',
+    'Next.js',
+    'work experience',
+    'AI researcher',
+    'full stack developer',
+    'cloud computing',
+    'machine learning engineer',
+    'professional background',
+    'professional experience',
+    'professional skills',
+    'professional education',
+    'professional certifications',
+    'professional interests',
+    'professional contact'
+  ],
+}
+
 export default function Page() {
   const workExperience = [
     {
@@ -5,53 +36,50 @@ export default function Page() {
       company: "LCG Inc",
       period: "Oct 2024 - Present",
       bullets: [
-        "Engineering serverless applications with Azure Functions and cloud platform resources",
-        "Developing RAG applications and vector search solutions using Microsoft Azure",
-        "Building AI-driven tools that significantly reduce client workloads",
-        "Managing cloud infrastructure for GenAI models across Azure and AWS Bedrock",
-        "Administering Microsoft Active Directory environment and device management"
+        "Building AI-driven applications and managing cloud GenAI deployments",
+        "Developing serverless RAG applications and vector search solutions",
+        "Engineering cloud infrastructure across Azure and AWS platforms",
+        "Managing enterprise Active Directory and device environments"
       ]
     },
     {
-      title: "Level 2 Desktop Support Technician",
+      title: "Technology Specialist II",
       company: "LCG Inc",
       period: "Nov 2023 - Oct 2024",
       bullets: [
-        "Provided level 2 technical support for client software, hardware, and network devices",
-        "Administered client domain and security reporting for device tracking procedures"
+        "Provided enterprise-level technical support and system administration",
+        "Managed Active Directory user accounts and security procedures"
       ]
     },
     {
-      title: "Fine-Tuner and GenAI Consultant",
+      title: "Software and GenAI Systems Engineer",
       company: "BINXNET LLC",
       period: "Jun 2021 - Oct 2024",
       bullets: [
-        "Developed agentic data pipelines for offline RAG applications and custom generative diffusion workflows",
-        "Gained hands-on experience in Python, debugging, Git, Diffusers, and PyTorch",
-        "Offered generative model fine-tuning services, processing large amounts of data and evaluating GenAI models",
-        "Organized community events, encouraging open-source innovation and collaborative research",
-        "Provided extensive GenAI consultations for a variety of clients across many unique use cases"
+        "Developed custom RAG applications and generative AI workflows",
+        "Built data pipelines using Python, PyTorch, and Diffusers",
+        "Provided GenAI consulting and model fine-tuning services",
+        "Led community events focused on open-source AI innovation"
       ]
     },
     {
-      title: "Technology Cadet (Student Internship)",
+      title: "IT Specialist Intern",
       company: "Spartanburg School District 5",
       period: "Jan 2016 - Jan 2017",
       bullets: [
-        "Provided technical support to faculty and staff of District 5 schools as part of an accelerated student program",
-        "Managed user accounts and gained experience troubleshooting network devices",
-        "Gained experience with helpdesk ticketing software"
+        "Provided technical support in accelerated student program",
+        "Managed user accounts and network device troubleshooting",
+        "Operated helpdesk ticketing systems"
       ]
     }
   ]
 
   const skills = [
-    "Python", "GenAI", "Azure Functions",
-    "Cloud Services (AWS/Azure)", "Active Directory",
-    "RAG Applications", "Vector Search",
-    "PyTorch", "Diffusers", "Git",
-    "Windows", "Arch Linux", "Ubuntu", "Next.js",
-    "Serverless Architecture"
+    "GenAI", "RAG Applications", "PyTorch", "Diffusers", 
+    "Vector Search", "LLMs", "Computer Vision", "NLP",
+    "AWS", "Azure", "Python", "TypeScript", "Next.js",
+    "React", "Git", "Active Directory", "Windows",
+    "Arch Linux", "Ubuntu", "Network Security", "DevOps"
   ]
 
   const education = {
@@ -92,19 +120,23 @@ export default function Page() {
   }
 
   return (
-    <section>
+    <section className="relative">
+      <AnimatedGridPattern
+          numSquares={33}
+          maxOpacity={0.1}
+          duration={3}
+          repeatDelay={1}
+          className="[mask-image:radial-gradient(4000px_circle_at_center,transparent,white)] fixed inset-0 h-full w-full -z-10"
+        />
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         About Me
       </h1>
 
       <p className="mb-8 text-neutral-600 dark:text-neutral-400">
-        I am a Developer and GenAI researcher based in the DMV area, specializing in AI-driven applications and cloud solutions. 
-        With extensive experience in Python and cloud services, I focus on developing tools using open-source machine learning technologies. 
-        My expertise includes fine-tuning generative diffusion models, creating RAG applications, and managing cloud environments for AI training and deployments.
-      </p>
-      <p className="mb-8 text-neutral-600 dark:text-neutral-400">
-        I am currently working as a full-stack developer at LCG Inc, and I spend much of my free time learning by working on personal projects, 
-        and keeping up with the latest advancements in the field of generative artifical intelligence.
+        I'm a Full Stack Developer and GenAI Researcher specializing in diffusion models and AI-driven applications. 
+        With a background in networking and cybersecurity, I combine Azure cloud services with machine learning 
+        to create accessible solutions. My core focus is on computer vision and NLP workflows, while expanding 
+        my development skills by building enterprise applications.
       </p>
       
       <div className="space-y-8">
@@ -217,15 +249,4 @@ export default function Page() {
       </div>
     </section>
   )
-}
-
-export const metadata = {
-  keywords: [
-    'work experience',
-    'AI researcher',
-    'full stack developer',
-    'cloud computing',
-    'machine learning engineer',
-    'professional background'
-  ],
 }
