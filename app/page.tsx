@@ -1,11 +1,22 @@
 import { RecentPosts } from './components/recentPosts'
+import { Typewriter } from "./components/typewriter"
 
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        Zac Bagley
-      </h1>
+      <div className="mb-8 text-2xl font-semibold tracking-tighter">
+        <span>Hi, my name is Zac, and I am a </span>
+        <Typewriter 
+          text={[
+            "developer.",
+            "researcher.",
+            "digital creator."
+          ]}
+          className="text-violet-400"
+          speed={60}
+          waitTime={1500}
+        />
+      </div>
       <p className="mb-4">
         {`Passionate about deep learning and software engineering. 
         Building accessible GenAI applications with a focus on open-source 
