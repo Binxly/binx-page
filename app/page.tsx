@@ -21,7 +21,8 @@ export default function Page() {
         {`Passionate about deep learning and software engineering. 
         Building accessible GenAI applications with a focus on open-source 
         technologies and transparent data practices. Committed to advancing 
-        digital equality through responsible AI development and knowledge sharing.`}
+        technological accessibility through responsible AI development and knowledge sharing. 
+        Learning more every day.`}
       </p>
       <div className="my-8">
         <RecentPosts />
