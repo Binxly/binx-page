@@ -11,7 +11,7 @@ export default function Page() {
           maxOpacity={0.1}
           duration={3}
           repeatDelay={1}
-          className="[mask-image:radial-gradient(4000px_circle_at_center,transparent,white)] fixed inset-0 h-full w-full -z-10"
+          className="[mask-image:radial-gradient(3000px_circle_at_center,transparent,rgba(255,255,255,0.4))] fixed inset-0 h-full w-full -z-10"
         />
 
       <div className="mb-8 text-[1.6rem] sm:text-2xl font-semibold tracking-tighter text-center sm:text-left">

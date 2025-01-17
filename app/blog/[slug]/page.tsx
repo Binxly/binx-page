@@ -94,12 +94,12 @@ export default function Blog({ params }) {
         {/* Main content */}
         <section className="w-full lg:w-3/4 xl:w-4/5">
 
-          <AnimatedGridPattern
+        <AnimatedGridPattern
           numSquares={33}
           maxOpacity={0.1}
           duration={3}
           repeatDelay={1}
-          className="[mask-image:radial-gradient(4000px_circle_at_center,transparent,white)] fixed inset-0 h-full w-full -z-10"
+          className="[mask-image:radial-gradient(5000px_circle_at_center,transparent,rgba(255,255,255,0.2))] fixed inset-0 h-full w-full -z-10"
         />
 
           <h1 className="title font-semibold text-2xl sm:text-3xl md:text-4xl tracking-tighter mb-4">
