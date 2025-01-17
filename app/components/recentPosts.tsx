@@ -23,7 +23,6 @@ export function RecentPosts() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="transition-transform hover:-translate-y-1"
             >
               <LinePatternCard>
                 <LinePatternCardBody>

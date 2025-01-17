@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '../../utils/client'
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface LinePatternCardProps {
   children: React.ReactNode
@@ -13,23 +13,33 @@ export function LinePatternCard({
   className,
 }: LinePatternCardProps) {
   return (
-    <motion.div
-      className={cn(
-        "border w-full rounded-md overflow-hidden",
-        "bg-white dark:bg-black",
-        "border-neutral-200 dark:border-neutral-800",
-        "relative",
-        className
-      )}
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,#80808012,#80808012_1px,transparent_1px,transparent_20px)]" />
-      <div className="relative">
-        {children}
-      </div>
-    </motion.div>
+    <AnimatePresence mode="wait">
+      <motion.div
+        className={cn(
+          "border w-full rounded-md overflow-hidden",
+          "bg-white dark:bg-black",
+          "border-neutral-200 dark:border-neutral-800",
+          "relative",
+          className
+        )}
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        whileHover={{ y: -4 }}
+        viewport={{ once: true }}
+        transition={{ 
+          duration: 0.4, 
+          ease: "easeOut",
+          y: {
+            duration: 0.2
+          }
+        }}
+      >
+        <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,#80808012,#80808012_1px,transparent_1px,transparent_20px)]" />
+        <div className="relative">
+          {children}
+        </div>
+      </motion.div>
+    </AnimatePresence>
   )
 }
 
