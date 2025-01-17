@@ -1,44 +1,49 @@
 import Link from 'next/link'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { LinePatternCard, LinePatternCardBody } from './ui/line-pattern-card'
 
 export function BlogPosts() {
   let allBlogs = getBlogPosts()
 
   return (
-    <div className="flex flex-col">
-      <h1 className="mb-4 text-lg font-semibold tracking-tighter">
+    <div className="flex flex-col space-y-4">
+      <h1 className="text-lg font-semibold tracking-tighter">
         👁️‍🗨️ Blog Posts 
       </h1>
-      {allBlogs
-        .sort((a, b) => {
-          if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
-            return -1
-          }
-          return 1
-        })
-        .map((post, index) => (
-          <div key={post.slug} className="py-2">
+      <div className="grid gap-3">
+        {allBlogs
+          .sort((a, b) => {
+            if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
+              return -1
+            }
+            return 1
+          })
+          .map((post) => (
             <Link
-              className="inline-block hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md transition-colors"
+              key={post.slug}
               href={`/blog/${post.slug}`}
+              className="transition-transform hover:-translate-y-0.5"
             >
-              <article className="flex flex-col space-y-2 p-2">
-                <div className="text-sm text-neutral-600 dark:text-neutral-400">
-                  {formatDate(post.metadata.publishedAt, false)}
-                </div>
-                <div className="flex flex-row items-center">
-                  <h2 className="text-neutral-900 dark:text-neutral-100">
-                    {post.metadata.title}
-                  </h2>
-                  <span className="text-sm px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md ml-2">
-                    {post.metadata.tag ? String(post.metadata.tag) : 'notes'}
-                  </span>
-                </div>
-              </article>
+              <LinePatternCard>
+                <LinePatternCardBody className="p-3">
+                  <div className="flex justify-between items-start gap-2">
+                    <div>
+                      <h2 className="font-medium text-neutral-900 dark:text-neutral-100">
+                        {post.metadata.title}
+                      </h2>
+                      <div className="text-sm text-neutral-600 dark:text-neutral-400">
+                        {formatDate(post.metadata.publishedAt, false)}
+                      </div>
+                    </div>
+                    <span className="text-xs px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md shrink-0">
+                      {post.metadata.tag ? String(post.metadata.tag) : 'notes'}
+                    </span>
+                  </div>
+                </LinePatternCardBody>
+              </LinePatternCard>
             </Link>
-            {index < allBlogs.length - 1 && <div className="fade-divider mt-4" />}
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
   )
 }
