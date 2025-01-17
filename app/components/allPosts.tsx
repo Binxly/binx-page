@@ -22,7 +22,6 @@ export function BlogPosts() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="transition-transform hover:-translate-y-0.5"
             >
               <LinePatternCard>
                 <LinePatternCardBody className="p-3">

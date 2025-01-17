@@ -19,7 +19,7 @@ export function LinePatternCard({
           "border w-full rounded-md overflow-hidden",
           "bg-white dark:bg-black",
           "border-neutral-200 dark:border-neutral-800",
-          "relative",
+          "relative transition-transform hover:-translate-y-1",
           className
         )}
         initial={{ opacity: 0, y: -20 }}
