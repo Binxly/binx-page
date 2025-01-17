@@ -1,3 +1,34 @@
+import { Metadata } from 'next'
+import { AnimatedGridPattern } from "../components/ui/animated-grid-pattern"
+
+export const metadata: Metadata = {
+  title: 'About Me | Binx',
+  description: 'Full Stack Developer and GenAI Researcher specializing in diffusion models and AI-driven applications.',
+  keywords: [
+    'Full Stack Developer',
+    'GenAI',
+    'Machine Learning',
+    'AI Applications',
+    'Cloud Computing',
+    'Python',
+    'TypeScript',
+    'React',
+    'Next.js',
+    'work experience',
+    'AI researcher',
+    'full stack developer',
+    'cloud computing',
+    'machine learning engineer',
+    'professional background',
+    'professional experience',
+    'professional skills',
+    'professional education',
+    'professional certifications',
+    'professional interests',
+    'professional contact'
+  ],
+}
+
 export default function Page() {
   const workExperience = [
     {
@@ -89,7 +120,14 @@ export default function Page() {
   }
 
   return (
-    <section>
+    <section className="relative">
+      <AnimatedGridPattern
+          numSquares={33}
+          maxOpacity={0.1}
+          duration={3}
+          repeatDelay={1}
+          className="[mask-image:radial-gradient(4000px_circle_at_center,transparent,white)] fixed inset-0 h-full w-full -z-10"
+        />
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         About Me
       </h1>
@@ -211,15 +249,4 @@ export default function Page() {
       </div>
     </section>
   )
-}
-
-export const metadata = {
-  keywords: [
-    'work experience',
-    'AI researcher',
-    'full stack developer',
-    'cloud computing',
-    'machine learning engineer',
-    'professional background'
-  ],
 }

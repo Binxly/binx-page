@@ -130,5 +130,4 @@ const Typewriter = ({
     </div>
   )
 }
-
 export { Typewriter }
