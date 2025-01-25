@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { AnimatedGridPattern } from "../components/ui/animated-grid-pattern"
 import { SocialLinks } from "../components/socialLinks"
+import { GradientCard, GradientCardBody } from "../components/ui/gradient-card"
 
 export const metadata: Metadata = {
   title: 'About Me | Binx',
@@ -140,7 +141,7 @@ export default function Page() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">About Me</h1>
-        <p className="text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+        <p className="text-lg leading-relaxed">
           I build AI-powered applications with a focus on computer vision and natural language processing. 
           My background is formally in networking and cybersecurity, while self-studying programming and deep learning. 
           I'm currently working on developing large-scale data solutions that bridge dynamic client needs with emerging technologies.
@@ -151,75 +152,85 @@ export default function Page() {
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Work Experience</h2>
           {workExperience.map((job, index) => (
-            <details key={index} className="mb-8 bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg group">
-              <summary className="font-semibold text-xl text-neutral-900 dark:text-neutral-100 cursor-pointer list-none">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="inline">{job.title}</h3>
-                    <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mt-1">
-                      {job.company} • {job.period}
-                    </p>
+            <GradientCard key={index} className="mb-4">
+              <details className="group">
+                <summary className="font-semibold text-xl cursor-pointer list-none p-6">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="inline">{job.title}</h3>
+                      <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mt-1">
+                        {job.company} • {job.period}
+                      </p>
+                    </div>
+                    <span className="text-neutral-500 transform group-open:rotate-180 transition-transform duration-200">▼</span>
                   </div>
-                  <span className="text-neutral-500 transform group-open:rotate-180 transition-transform duration-200">▼</span>
-                </div>
-              </summary>
-              <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 space-y-2 mt-4">
-                {job.bullets.map((bullet, bulletIndex) => (
-                  <li key={bulletIndex} className="pl-1">{bullet}</li>
-                ))}
-              </ul>
-            </details>
+                </summary>
+                <GradientCardBody>
+                  <ul className="list-disc list-inside space-y-2">
+                    {job.bullets.map((bullet, bulletIndex) => (
+                      <li key={bulletIndex} className="pl-1">{bullet}</li>
+                    ))}
+                  </ul>
+                </GradientCardBody>
+              </details>
+            </GradientCard>
           ))}
         </div>
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Skills</h2>
-          <div className="flex flex-wrap justify-center gap-2">
-            {skills.map((skill, index) => (
-              <span 
-                key={index}
-                className="text-sm px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
+          <GradientCard>
+            <GradientCardBody>
+              <div className="flex flex-wrap justify-center gap-2">
+                {skills.map((skill, index) => (
+                  <span 
+                    key={index}
+                    className="text-sm px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </GradientCardBody>
+          </GradientCard>
         </div>
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Education</h2>
-          <div className="bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8">
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
-                  {education.degree}
-                </h3>
-                <p className="text-lg text-neutral-700 dark:text-neutral-300 mt-1">
-                  {education.institution}
-                </p>
-                <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mt-1">
-                  {education.specialization}
-                </p>
+          <GradientCard>
+            <GradientCardBody>
+              <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8">
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
+                    {education.degree}
+                  </h3>
+                  <p className="text-lg text-neutral-700 dark:text-neutral-300 mt-1">
+                    {education.institution}
+                  </p>
+                  <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mt-1">
+                    {education.specialization}
+                  </p>
+                </div>
+                
+                <div className="flex-1">
+                  <h4 className="text-lg font-medium text-neutral-800 dark:text-neutral-200 mb-3">
+                    Key Studies
+                  </h4>
+                  <ul className="space-y-3">
+                    {education.keyStudies.map((study, index) => (
+                      <li 
+                        key={index}
+                        className="flex items-center gap-3 text-neutral-600 dark:text-neutral-400"
+                      >
+                        <div className="h-4 w-[2px] bg-violet-400 dark:bg-violet-600 shrink-0" />
+                        <span>{study}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              
-              <div className="flex-1">
-                <h4 className="text-lg font-medium text-neutral-800 dark:text-neutral-200 mb-3">
-                  Key Studies
-                </h4>
-                <ul className="space-y-3">
-                  {education.keyStudies.map((study, index) => (
-                    <li 
-                      key={index}
-                      className="flex items-center gap-3 text-neutral-600 dark:text-neutral-400"
-                    >
-                      <div className="h-4 w-[2px] bg-violet-400 dark:bg-violet-600 shrink-0" />
-                      <span>{study}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+            </GradientCardBody>
+          </GradientCard>
         </div>
 
         <div>
@@ -228,42 +239,44 @@ export default function Page() {
             <a 
               href={contact.bootdev} 
               target="_blank" 
-              rel="noopener noreferrer" 
-              className="block bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              rel="noopener noreferrer"
             >
-              <div className="flex justify-between items-center">
-                <div>
-                  <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">Boot.dev Profile</h3>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Learning Path Progress</p>
-                </div>
-                <span className="text-neutral-500">→</span>
-              </div>
+              <GradientCard>
+                <GradientCardBody>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">Boot.dev Profile</h3>
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400">Learning Path Progress</p>
+                    </div>
+                    <span className="text-neutral-500">→</span>
+                  </div>
+                </GradientCardBody>
+              </GradientCard>
             </a>
             
             {certifications.map((cert, index) => (
-              <div 
-                key={index} 
-                className="bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg"
-              >
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">{cert.title}</h3>
-                    <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                      {cert.issuer} • {cert.date}
-                    </p>
+              <GradientCard key={index}>
+                <GradientCardBody>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">{cert.title}</h3>
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                        {cert.issuer} • {cert.date}
+                      </p>
+                    </div>
+                    {cert.link !== "#" && (
+                      <a 
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"
+                      >
+                        →
+                      </a>
+                    )}
                   </div>
-                  {cert.link !== "#" && (
-                    <a 
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"
-                    >
-                      →
-                    </a>
-                  )}
-                </div>
-              </div>
+                </GradientCardBody>
+              </GradientCard>
             ))}
             <p className="text-[10px] text-neutral-500 dark:text-neutral-500 text-center mt-2">
               * certification links available upon request
@@ -273,31 +286,39 @@ export default function Page() {
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Interests</h2>
-          <div className="flex flex-wrap justify-center gap-2">
-            {interests.map((interest, index) => (
-              <span 
-                key={index}
-                className="text-sm px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full"
-              >
-                {interest}
-              </span>
-            ))}
-          </div>
+          <GradientCard>
+            <GradientCardBody>
+              <div className="flex flex-wrap justify-center gap-2">
+                {interests.map((interest, index) => (
+                  <span 
+                    key={index}
+                    className="text-sm px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full"
+                  >
+                    {interest}
+                  </span>
+                ))}
+              </div>
+            </GradientCardBody>
+          </GradientCard>
         </div>
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
-          <div className="space-y-6">
-            <SocialLinks className="mb-4" />
-            <div className="text-center">
-              <a 
-                href={`mailto:${contact.email}`} 
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 underline"
-              >
-                {contact.email}
-              </a>
-            </div>
-          </div>
+          <GradientCard>
+            <GradientCardBody>
+              <div className="space-y-6">
+                <SocialLinks className="mb-4" />
+                <div className="text-center">
+                  <a 
+                    href={`mailto:${contact.email}`} 
+                    className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 underline"
+                  >
+                    {contact.email}
+                  </a>
+                </div>
+              </div>
+            </GradientCardBody>
+          </GradientCard>
         </div>
       </div>
     </section>
