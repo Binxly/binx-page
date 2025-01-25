@@ -97,15 +97,21 @@ export default function Page() {
 
   const certifications = [
     {
-      title: "Neural Networks and Deep Learning - DeepLearning.AI",
+      title: "Neural Networks and Deep Learning",
+      issuer: "DeepLearning.AI",
+      date: "2024",
       link: "#"
     },
     {
-      title: "CCNA ENSA - Cisco Networking Academy",
+      title: "CCNA ENSA",
+      issuer: "Cisco Networking Academy",
+      date: "2022",
       link: "#"
     },
     {
-      title: "Cisco CyberOps Associate - Cisco Networking Academy",
+      title: "Cisco CyberOps Associate",
+      issuer: "Cisco Networking Academy",
+      date: "2022",
       link: "#"
     }
   ]
@@ -182,48 +188,85 @@ export default function Page() {
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Education</h2>
           <div className="bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg">
-            <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
-              {education.degree}
-            </h3>
-            <p className="text-sm italic mb-2 text-neutral-600 dark:text-neutral-400">
-              {education.specialization}
-            </p>
-            <p className="mb-4 text-neutral-600 dark:text-neutral-400">
-              {education.institution}
-            </p>
-            <div className="space-y-2">
-              {education.keyStudies.map((study, index) => (
-                <p key={index} className="text-neutral-600 dark:text-neutral-400">• {study}</p>
-              ))}
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8">
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
+                  {education.degree}
+                </h3>
+                <p className="text-lg text-neutral-700 dark:text-neutral-300 mt-1">
+                  {education.institution}
+                </p>
+                <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mt-1">
+                  {education.specialization}
+                </p>
+              </div>
+              
+              <div className="flex-1">
+                <h4 className="text-lg font-medium text-neutral-800 dark:text-neutral-200 mb-3">
+                  Key Studies
+                </h4>
+                <ul className="space-y-3">
+                  {education.keyStudies.map((study, index) => (
+                    <li 
+                      key={index}
+                      className="flex items-center gap-3 text-neutral-600 dark:text-neutral-400"
+                    >
+                      <div className="h-4 w-[2px] bg-violet-400 dark:bg-violet-600 shrink-0" />
+                      <span>{study}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Certifications</h2>
-          <div className="bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg">
-            <ul className="space-y-2 text-neutral-600 dark:text-neutral-400">
-              <li className="flex items-center">
-                <span className="mr-2">•</span>
-                <a href={contact.bootdev} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
-                  Boot.dev Profile - Learning Path Progress
-                </a>
-              </li>
-              {certifications.map((cert, index) => (
-                <li key={index} className="flex items-center">
-                  <span className="mr-2">•</span>
-                  <a 
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-neutral-800 dark:hover:text-neutral-200 underline"
-                  >
-                    {cert.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="text-[10px] text-neutral-500 dark:text-neutral-500 mt-4">* links available upon request</p>
+          <div className="space-y-4">
+            <a 
+              href={contact.bootdev} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            >
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">Boot.dev Profile</h3>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Learning Path Progress</p>
+                </div>
+                <span className="text-neutral-500">→</span>
+              </div>
+            </a>
+            
+            {certifications.map((cert, index) => (
+              <div 
+                key={index} 
+                className="bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg"
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">{cert.title}</h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                      {cert.issuer} • {cert.date}
+                    </p>
+                  </div>
+                  {cert.link !== "#" && (
+                    <a 
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"
+                    >
+                      →
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+            <p className="text-[10px] text-neutral-500 dark:text-neutral-500 text-center mt-2">
+              * certification links available upon request
+            </p>
           </div>
         </div>
 
