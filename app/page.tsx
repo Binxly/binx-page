@@ -33,7 +33,7 @@ export default function Page() {
       <p className="mb-8 text-lg leading-relaxed">
         I'm an indie full-stack developer and generative model fine-tuner. You can find my 
         generative fine-tuning results on Instagram, <a href="https://www.instagram.com/binx.ly" className="text-violet-400 hover:text-violet-300" target="_blank" rel="noopener noreferrer">@binx.ly</a>; 
-        my other links can be found in my footer. When I'm not reading or working 
+        my links can all be found in my footer! When I'm not reading or working 
         on personal projects, you'll find me experimenting with new tech, tweaking my 
         Arch (btw) configuration, or collaborating with technology enthusiasts online.
       </p>

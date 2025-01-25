@@ -143,7 +143,7 @@ export default function Page() {
         <h1 className="text-3xl font-bold mb-2">About Me</h1>
         <p className="text-lg leading-relaxed">
           I build AI-powered applications with a focus on computer vision and natural language processing. 
-          My background is formally in networking and cybersecurity, while self-studying programming and deep learning. 
+          My background is formally in networking and cybersecurity, while self-studying programming and deep learning since 2019. 
           I'm currently working on developing large-scale data solutions that bridge dynamic client needs with emerging technologies.
         </p>
       </div>
