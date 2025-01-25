@@ -34,7 +34,7 @@ export function LinePatternCard({
           }
         }}
       >
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,#80808012,#80808012_1px,transparent_1px,transparent_20px)]" />
+        <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,#80808025,#80808025_1px,transparent_1px,transparent_20px)]" />
         <div className="relative">
           {children}
         </div>

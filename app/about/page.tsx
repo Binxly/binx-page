@@ -36,10 +36,10 @@ export default function Page() {
       company: "LCG Inc",
       period: "Oct 2024 - Present",
       bullets: [
-        "Building AI-driven applications and managing cloud GenAI deployments",
-        "Developing serverless RAG applications and vector search solutions",
-        "Engineering cloud infrastructure across Azure and AWS platforms",
-        "Managing enterprise Active Directory and device environments"
+        "Developing AI applications, largely focused on NLP solutions",
+        "Engineering cloud infrastructure and managing model deployments",
+        "Administering Windows enterprise environments",
+        "Implementing automated data pipelines leveraging cloud services"
       ]
     },
     {
@@ -47,8 +47,11 @@ export default function Page() {
       company: "LCG Inc",
       period: "Nov 2023 - Oct 2024",
       bullets: [
-        "Provided enterprise-level technical support and system administration",
-        "Managed Active Directory user accounts and security procedures"
+        "Resolved Level 2 tickets for enterprise hardware and software issues",
+        "Managed Active Directory users and group policies",
+        "Reviewed Cylance security reports and maintained compliance",
+        "Deployed workstations and VoIP phones",
+        "Wrote and updated Standard Operating Procedures (SOPs)"
       ]
     },
     {
@@ -57,9 +60,8 @@ export default function Page() {
       period: "Jun 2021 - Oct 2024",
       bullets: [
         "Developed custom RAG applications and generative AI workflows",
-        "Built data pipelines using Python, PyTorch, and Diffusers",
+        "Built generative image pipelines using Python",
         "Provided GenAI consulting and model fine-tuning services",
-        "Led community events focused on open-source AI innovation"
       ]
     },
     {
@@ -123,20 +125,19 @@ export default function Page() {
     <section className="relative">
       <AnimatedGridPattern
           numSquares={33}
-          maxOpacity={0.1}
+          maxOpacity={0.03}
           duration={3}
           repeatDelay={1}
-          className="[mask-image:radial-gradient(3000px_circle_at_center,transparent,rgba(255,255,255,0.4))] fixed inset-0 h-full w-full -z-10"
+          className="fixed inset-0 h-full w-full -z-10"
         />
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         About Me
       </h1>
 
       <p className="mb-8 text-neutral-600 dark:text-neutral-400">
-        I'm a Full Stack Developer and GenAI Researcher specializing in diffusion models and AI-driven applications. 
-        With a background in networking and cybersecurity, I combine Azure cloud services with machine learning 
-        to create accessible solutions. My core focus is on computer vision and NLP workflows, while expanding 
-        my development skills by building enterprise applications.
+        I build AI-powered applications with a focus on computer vision and natural language processing. 
+        My background is formally in networking and cybersecurity, while self-studying programming and deep learning. 
+        I'm currently working on developing large-scale data solutions that bridge dynamic client needs with emerging technologies.
       </p>
       
       <div className="space-y-8">

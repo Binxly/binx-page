@@ -17,12 +17,12 @@ export default function Page() {
   return (
     <section>
 
-      <AnimatedGridPattern
+        <AnimatedGridPattern
           numSquares={33}
-          maxOpacity={0.1}
+          maxOpacity={0.03}
           duration={3}
           repeatDelay={1}
-          className="[mask-image:radial-gradient(3000px_circle_at_center,transparent,rgba(255,255,255,0.4))] fixed inset-0 h-full w-full -z-10"
+          className="fixed inset-0 h-full w-full -z-10"
         />
 
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Binx Bytes</h1>
