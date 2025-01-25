@@ -20,20 +20,23 @@ export function RecentPosts() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
+              className="no-underline"
             >
               <GradientCard>
-                <GradientCardBody>
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="text-sm text-neutral-600 dark:text-neutral-400">
-                      {formatDate(post.metadata.publishedAt, false)}
+                <GradientCardBody className="p-4">
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between">
+                      <div className="text-xs italic text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
+                        {formatDate(post.metadata.publishedAt, false)}
+                      </div>
+                      <span className="text-xs px-2.5 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg whitespace-nowrap">
+                        {post.metadata.tag ? String(post.metadata.tag) : 'notes'}
+                      </span>
                     </div>
-                    <span className="text-xs px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded">
-                      {post.metadata.tag ? String(post.metadata.tag) : 'notes'}
-                    </span>
+                    <h2 className="font-medium text-neutral-900 dark:text-neutral-100">
+                      {post.metadata.title}
+                    </h2>
                   </div>
-                  <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-                    {post.metadata.title}
-                  </h2>
                 </GradientCardBody>
               </GradientCard>
             </Link>
