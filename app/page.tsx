@@ -19,10 +19,10 @@ export default function Page() {
         <div className="text-2xl text-violet-400 font-semibold mb-4">
           <Typewriter 
             text={[
-              "Digital Nomad",
               "Full-Stack Developer",
               "GenAI Engineer",
-              "Tinkerer"
+              "Tinkerer",
+              "Digital Nomad"
             ]}
             speed={60}
             waitTime={1500}
