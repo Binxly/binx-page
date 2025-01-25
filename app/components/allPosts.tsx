@@ -26,20 +26,18 @@ export function BlogPosts() {
             >
               <GradientCard>
                 <GradientCardBody className="p-4">
-                  <div className="flex flex-col gap-4">
-                    <div className="flex justify-between items-center gap-4">
-                      <div className="flex items-center gap-4 min-w-0">
-                        <h2 className="font-medium text-neutral-900 dark:text-neutral-100 truncate">
-                          {post.metadata.title}
-                        </h2>
-                        <div className="text-xs italic text-neutral-600 dark:text-neutral-400 whitespace-nowrap no-underline">
-                          {formatDate(post.metadata.publishedAt, false)}
-                        </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex justify-between items-center">
+                      <div className="text-xs italic text-neutral-600 dark:text-neutral-400 whitespace-nowrap no-underline">
+                        {formatDate(post.metadata.publishedAt, false)}
                       </div>
                       <span className="text-xs px-2.5 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg whitespace-nowrap">
                         {post.metadata.tag ? String(post.metadata.tag) : 'notes'}
                       </span>
                     </div>
+                    <h2 className="font-medium text-neutral-900 dark:text-neutral-100">
+                      {post.metadata.title}
+                    </h2>
                   </div>
                 </GradientCardBody>
               </GradientCard>
