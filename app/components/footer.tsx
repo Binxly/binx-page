@@ -75,6 +75,17 @@ export default function Footer() {
           </a>
         </li>
         <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.linkedin.com/in/zac-bagley-4aa51417a/"
+          >
+            <ArrowIcon />
+            <p className="ml-2 h-7">linkedin</p>
+          </a>
+        </li>
+        <li>
           <span className="px-2 text-neutral-400 dark:text-neutral-500">•</span>
         </li>
         <li>
