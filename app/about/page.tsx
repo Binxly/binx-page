@@ -153,7 +153,7 @@ export default function Page() {
           <h2 className="text-2xl font-semibold mb-6 text-center">Work Experience</h2>
           {workExperience.map((job, index) => (
             <GradientCard key={index} className="mb-4">
-              <details className="group">
+              <details className="group [&>summary::-webkit-details-marker]:hidden [&>summary::marker]:hidden">
                 <summary className="font-semibold text-xl cursor-pointer list-none p-6">
                   <div className="flex justify-between items-center">
                     <div>
