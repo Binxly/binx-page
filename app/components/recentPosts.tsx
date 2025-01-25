@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
-import { LinePatternCard, LinePatternCardBody } from './ui/line-pattern-card'
+import { GradientCard, GradientCardBody } from './ui/gradient-card'
 
 export function RecentPosts() {
   let allBlogs = getBlogPosts()
@@ -21,19 +21,21 @@ export function RecentPosts() {
               key={post.slug}
               href={`/blog/${post.slug}`}
             >
-              <LinePatternCard>
-                <LinePatternCardBody>
-                  <div className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
-                    {formatDate(post.metadata.publishedAt, false)}
+              <GradientCard>
+                <GradientCardBody>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-sm text-neutral-600 dark:text-neutral-400">
+                      {formatDate(post.metadata.publishedAt, false)}
+                    </div>
+                    <span className="text-xs px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded">
+                      {post.metadata.tag ? String(post.metadata.tag) : 'notes'}
+                    </span>
                   </div>
-                  <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                  <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                     {post.metadata.title}
                   </h2>
-                  <span className="inline-block text-sm px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md">
-                    {post.metadata.tag ? String(post.metadata.tag) : 'notes'}
-                  </span>
-                </LinePatternCardBody>
-              </LinePatternCard>
+                </GradientCardBody>
+              </GradientCard>
             </Link>
           ))}
       </div>

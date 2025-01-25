@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
-import { LinePatternCard, LinePatternCardBody } from './ui/line-pattern-card'
+import { GradientCard, GradientCardBody } from './ui/gradient-card'
 
 export function BlogPosts() {
   let allBlogs = getBlogPosts()
@@ -23,8 +23,8 @@ export function BlogPosts() {
               key={post.slug}
               href={`/blog/${post.slug}`}
             >
-              <LinePatternCard>
-                <LinePatternCardBody className="p-3">
+              <GradientCard>
+                <GradientCardBody className="p-3">
                   <div className="flex justify-between items-start gap-2">
                     <div>
                       <h2 className="font-medium text-neutral-900 dark:text-neutral-100">
@@ -38,8 +38,8 @@ export function BlogPosts() {
                       {post.metadata.tag ? String(post.metadata.tag) : 'notes'}
                     </span>
                   </div>
-                </LinePatternCardBody>
-              </LinePatternCard>
+                </GradientCardBody>
+              </GradientCard>
             </Link>
           ))}
       </div>
