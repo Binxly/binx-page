@@ -311,7 +311,7 @@ export default function Page() {
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
           <div className="space-y-6">
-            <SocialLinks className="mb-4" />
+            <SocialLinks className="mb-4" hide={['rss']} />
           </div>
         </div>
       </div>
