@@ -151,11 +151,16 @@ export default function Page() {
               <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
                 {job.period}
               </p>
-              <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 space-y-1">
-                {job.bullets.map((bullet, bulletIndex) => (
-                  <li key={bulletIndex} className="pl-1">{bullet}</li>
-                ))}
-              </ul>
+              <details className="group cursor-pointer">
+                <summary className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200">
+                  more info
+                </summary>
+                <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 space-y-1 mt-2 ml-2">
+                  {job.bullets.map((bullet, bulletIndex) => (
+                    <li key={bulletIndex} className="pl-1">{bullet}</li>
+                  ))}
+                </ul>
+              </details>
             </div>
           ))}
         </div>
