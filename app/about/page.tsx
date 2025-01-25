@@ -146,10 +146,10 @@ export default function Page() {
           {workExperience.map((job, index) => (
             <div key={index} className="mb-6">
               <h3 className="font-medium text-neutral-900 dark:text-neutral-100">
-                {job.title} - {job.company}
+                {job.title}
               </h3>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
-                {job.period}
+              <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mb-2">
+                {job.company} • {job.period}
               </p>
               <details className="group cursor-pointer">
                 <summary className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200">
