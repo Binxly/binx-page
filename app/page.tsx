@@ -37,8 +37,6 @@ export default function Page() {
         Arch (btw) configuration, or collaborating with emerging technology enthusiasts online.
       </p>
 
-      <SocialLinks className="mb-12" />
-
       <div className="my-8">
         <h2 className="text-xl font-semibold mb-4">Recent Posts</h2>
         <RecentPosts />
