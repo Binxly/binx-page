@@ -111,7 +111,7 @@ export default function Page() {
   ]
 
   const interests = [
-    "Writing", "Digital Art", "Game Development", 
+    "Writing", "Digital Art", "Deep Learning","Game Development", 
     "Personal Knowledge Management", "Star Trek"
   ]
 
@@ -122,56 +122,51 @@ export default function Page() {
   }
 
   return (
-    <section className="relative">
+    <section className="max-w-3xl mx-auto text-center">
       <AnimatedGridPattern
-          numSquares={33}
-          maxOpacity={0.03}
-          duration={3}
-          repeatDelay={1}
-          className="fixed inset-0 h-full w-full -z-10"
-        />
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        About Me
-      </h1>
+        numSquares={33}
+        maxOpacity={0.04}
+        duration={3}
+        repeatDelay={1}
+        className="fixed inset-0 h-full w-full -z-10"
+      />
 
-      <p className="mb-8 text-neutral-600 dark:text-neutral-400">
-        I build AI-powered applications with a focus on computer vision and natural language processing. 
-        My background is formally in networking and cybersecurity, while self-studying programming and deep learning. 
-        I'm currently working on developing large-scale data solutions that bridge dynamic client needs with emerging technologies.
-      </p>
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">About Me</h1>
+        <p className="text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+          I build AI-powered applications with a focus on computer vision and natural language processing. 
+          My background is formally in networking and cybersecurity, while self-studying programming and deep learning. 
+          I'm currently working on developing large-scale data solutions that bridge dynamic client needs with emerging technologies.
+        </p>
+      </div>
       
-      <div className="space-y-8">
+      <div className="space-y-12 text-left">
         <div>
-          <h2 className="mb-4 text-xl font-medium tracking-tight">Work Experience</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-center">Work Experience</h2>
           {workExperience.map((job, index) => (
-            <div key={index} className="mb-6">
-              <h3 className="font-medium text-neutral-900 dark:text-neutral-100">
+            <div key={index} className="mb-8 bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg">
+              <h3 className="font-semibold text-xl text-neutral-900 dark:text-neutral-100">
                 {job.title}
               </h3>
-              <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mb-2">
+              <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mb-3">
                 {job.company} • {job.period}
               </p>
-              <details className="group cursor-pointer">
-                <summary className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200">
-                  more info
-                </summary>
-                <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 space-y-1 mt-2 ml-2">
-                  {job.bullets.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="pl-1">{bullet}</li>
-                  ))}
-                </ul>
-              </details>
+              <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 space-y-2">
+                {job.bullets.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex} className="pl-1">{bullet}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
 
         <div>
-          <h2 className="mb-4 text-xl font-medium tracking-tight">Skills</h2>
-          <div className="flex flex-wrap gap-2">
+          <h2 className="text-2xl font-semibold mb-6 text-center">Skills</h2>
+          <div className="flex flex-wrap justify-center gap-2">
             {skills.map((skill, index) => (
               <span 
                 key={index}
-                className="text-sm px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md"
+                className="text-sm px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full"
               >
                 {skill}
               </span>
@@ -180,56 +175,60 @@ export default function Page() {
         </div>
 
         <div>
-          <h2 className="mb-4 text-xl font-medium tracking-tight">Education</h2>
-          <div className="text-neutral-600 dark:text-neutral-400">
-            <h3 className="text-lg font-medium text-neutral-900 dark:text-neutral-100 mb-1">
+          <h2 className="text-2xl font-semibold mb-6 text-center">Education</h2>
+          <div className="bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg">
+            <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
               {education.degree}
             </h3>
-            <p className="text-sm mb-2 italic">
+            <p className="text-sm italic mb-2 text-neutral-600 dark:text-neutral-400">
               {education.specialization}
             </p>
-            <p className="mb-4 text-sm">
+            <p className="mb-4 text-neutral-600 dark:text-neutral-400">
               {education.institution}
             </p>
-            <div className="pl-4 border-l-2 border-neutral-200 dark:border-neutral-800">
+            <div className="space-y-2">
               {education.keyStudies.map((study, index) => (
-                <p key={index} className="mb-2 text-sm">• {study}</p>
+                <p key={index} className="text-neutral-600 dark:text-neutral-400">• {study}</p>
               ))}
             </div>
           </div>
         </div>
 
         <div>
-          <h2 className="mb-4 text-xl font-medium tracking-tight">Certifications</h2>
-          <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400">
-            <li className="mb-2">
-              <a href={contact.bootdev} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
-                Boot.dev Profile - Learning Path Progress
-              </a>
-            </li>
-            {certifications.map((cert, index) => (
-              <li key={index} className="mb-2">
-                <a 
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-neutral-800 dark:hover:text-neutral-200 underline"
-                >
-                  {cert.title}
+          <h2 className="text-2xl font-semibold mb-6 text-center">Certifications</h2>
+          <div className="bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg">
+            <ul className="space-y-2 text-neutral-600 dark:text-neutral-400">
+              <li className="flex items-center">
+                <span className="mr-2">•</span>
+                <a href={contact.bootdev} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
+                  Boot.dev Profile - Learning Path Progress
                 </a>
               </li>
-            ))}
-          </ul>
-          <p className="text-[10px] text-neutral-500 dark:text-neutral-500 mt-1">* links available upon request</p>
+              {certifications.map((cert, index) => (
+                <li key={index} className="flex items-center">
+                  <span className="mr-2">•</span>
+                  <a 
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-neutral-800 dark:hover:text-neutral-200 underline"
+                  >
+                    {cert.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="text-[10px] text-neutral-500 dark:text-neutral-500 mt-4">* links available upon request</p>
+          </div>
         </div>
 
         <div>
-          <h2 className="mb-4 text-xl font-medium tracking-tight">Interests</h2>
-          <div className="flex flex-wrap gap-2">
+          <h2 className="text-2xl font-semibold mb-6 text-center">Interests</h2>
+          <div className="flex flex-wrap justify-center gap-2">
             {interests.map((interest, index) => (
               <span 
                 key={index}
-                className="text-sm px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md"
+                className="text-sm px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full"
               >
                 {interest}
               </span>
@@ -238,7 +237,7 @@ export default function Page() {
         </div>
 
         <div>
-          <h2 className="mb-4 text-xl font-medium tracking-tight">Contact & Social</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
           <ul className="list-none space-y-2 text-neutral-600 dark:text-neutral-400">
             <li>
               <a href={contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
