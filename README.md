@@ -19,7 +19,7 @@ My portfolio and blog site built with Next.js, featuring MDX blog posts, SEO opt
 
 ## Todo
 
-- [ ] Update keywords, unique to each slug / landing page
+
 
 ## Tech Stack
 
