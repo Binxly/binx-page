@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { AnimatedGridPattern } from "../components/ui/animated-grid-pattern"
+import { SocialLinks } from "../components/socialLinks"
 
 export const metadata: Metadata = {
   title: 'About Me | Binx',
@@ -286,18 +287,17 @@ export default function Page() {
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
-          <ul className="list-none space-y-2 text-neutral-600 dark:text-neutral-400">
-            <li>
-              <a href={contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${contact.email}`} className="hover:text-neutral-800 dark:hover:text-neutral-200 underline">
+          <div className="space-y-6">
+            <SocialLinks className="mb-4" />
+            <div className="text-center">
+              <a 
+                href={`mailto:${contact.email}`} 
+                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 underline"
+              >
                 {contact.email}
               </a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
