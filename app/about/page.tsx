@@ -144,19 +144,24 @@ export default function Page() {
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Work Experience</h2>
           {workExperience.map((job, index) => (
-            <div key={index} className="mb-8 bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg">
-              <h3 className="font-semibold text-xl text-neutral-900 dark:text-neutral-100">
-                {job.title}
-              </h3>
-              <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mb-3">
-                {job.company} • {job.period}
-              </p>
-              <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 space-y-2">
+            <details key={index} className="mb-8 bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg group">
+              <summary className="font-semibold text-xl text-neutral-900 dark:text-neutral-100 cursor-pointer list-none">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="inline">{job.title}</h3>
+                    <p className="text-sm italic text-neutral-600 dark:text-neutral-400 mt-1">
+                      {job.company} • {job.period}
+                    </p>
+                  </div>
+                  <span className="text-neutral-500 transform group-open:rotate-180 transition-transform duration-200">▼</span>
+                </div>
+              </summary>
+              <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 space-y-2 mt-4">
                 {job.bullets.map((bullet, bulletIndex) => (
                   <li key={bulletIndex} className="pl-1">{bullet}</li>
                 ))}
               </ul>
-            </div>
+            </details>
           ))}
         </div>
 
