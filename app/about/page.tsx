@@ -166,9 +166,15 @@ export default function Page() {
                   </div>
                 </summary>
                 <GradientCardBody>
-                  <ul className="list-disc list-inside space-y-2">
+                  <ul className="space-y-3">
                     {job.bullets.map((bullet, bulletIndex) => (
-                      <li key={bulletIndex} className="pl-1">{bullet}</li>
+                      <li 
+                        key={bulletIndex} 
+                        className="flex items-center gap-3 text-neutral-600 dark:text-neutral-400"
+                      >
+                        <div className="h-4 w-[2px] bg-violet-400 dark:bg-violet-600 shrink-0" />
+                        <span>{bullet}</span>
+                      </li>
                     ))}
                   </ul>
                 </GradientCardBody>
@@ -304,21 +310,9 @@ export default function Page() {
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
-          <GradientCard>
-            <GradientCardBody>
-              <div className="space-y-6">
-                <SocialLinks className="mb-4" />
-                <div className="text-center">
-                  <a 
-                    href={`mailto:${contact.email}`} 
-                    className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 underline"
-                  >
-                    {contact.email}
-                  </a>
-                </div>
-              </div>
-            </GradientCardBody>
-          </GradientCard>
+          <div className="space-y-6">
+            <SocialLinks className="mb-4" />
+          </div>
         </div>
       </div>
     </section>
