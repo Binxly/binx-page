@@ -6,11 +6,13 @@ import { motion, AnimatePresence } from "framer-motion"
 interface GradientCardProps {
   children: React.ReactNode
   className?: string
+  size?: 'default' | 'sm'
 }
 
 export function GradientCard({ 
   children, 
   className,
+  size = 'default'
 }: GradientCardProps) {
   return (
     <AnimatePresence mode="wait">
@@ -19,6 +21,7 @@ export function GradientCard({
           "group relative overflow-hidden rounded-lg",
           "bg-neutral-50/50 dark:bg-neutral-900/50",
           "border border-neutral-200 dark:border-neutral-800",
+          size === 'sm' && "scale-[0.7]",
           className
         )}
         initial={{ opacity: 0, y: 10 }}

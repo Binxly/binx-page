@@ -30,14 +30,14 @@ export default function Page() {
         </div>
       </div>
 
-      <p className="mb-6 text-lg leading-relaxed">
+      <p className="mb-8 text-lg leading-relaxed">
         I'm an indie full-stack developer and generative model fine-tuner. You can find my 
         generative fine-tuning results on Instagram using the link below! When I'm not 
         reading or working on personal projects, you'll find me experimenting with new tech, tweaking my 
         Arch (btw) configuration, or collaborating with emerging technology enthusiasts online.
       </p>
 
-      <SocialLinks className="mb-8" />
+      <SocialLinks className="mb-12" />
 
       <div className="my-8">
         <h2 className="text-xl font-semibold mb-4">Recent Posts</h2>
