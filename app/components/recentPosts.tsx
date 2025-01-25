@@ -7,9 +7,6 @@ export function RecentPosts() {
 
   return (
     <div className="flex flex-col space-y-6">
-      <h1 className="text-[1.6rem] sm:text-2xl font-semibold tracking-tighter">
-        📝 Latest Posts
-      </h1>
       <div className="grid gap-4">
         {allBlogs
           .sort((a, b) => {
