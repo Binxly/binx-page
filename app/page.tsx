@@ -15,18 +15,26 @@ export default function Page() {
       />
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Hi, I'm Zac 👋</h1>
-        <div className="text-2xl text-violet-400 font-semibold mb-4">
-          <Typewriter 
-            text={[
-              "Full-Stack Developer",
-              "GenAI Engineer",
-              "Tinkerer",
-              "Digital Nomad"
-            ]}
-            speed={60}
-            waitTime={1500}
-          />
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400">
+            Hi 👋 my name is Zac
+          </span>
+        </h1>
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-2xl text-neutral-600 dark:text-neutral-400">
+            and I am a
+          </p>
+          <div className="text-3xl md:text-4xl text-violet-400 font-bold">
+            <Typewriter 
+              text={[
+                "Full-Stack Developer",
+                "GenAI Engineer",
+                "Tinkerer"
+              ]}
+              speed={50}
+              waitTime={1500}
+            />
+          </div>
         </div>
       </div>
 
