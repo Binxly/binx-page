@@ -2,10 +2,11 @@ import { RecentPosts } from './components/recentPosts'
 import { Typewriter } from "./components/typewriter"
 import { AnimatedGridPattern } from "./components/ui/animated-grid-pattern"
 import { SocialLinks } from "./components/socialLinks"
+import { motion } from "framer-motion"
 
 export default function Page() {
   return (
-    <section className="max-w-3xl mx-auto text-center">
+    <section className="max-w-3xl mx-auto text-center relative">
       <AnimatedGridPattern
         numSquares={33}
         maxOpacity={0.04}
@@ -14,12 +15,17 @@ export default function Page() {
         className="fixed inset-0 h-full w-full -z-10"
       />
 
-      <div className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      <div className="mb-8 relative z-10">
+        <motion.h1 
+          className="text-4xl md:text-5xl font-bold mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400">
             Hi 👋 my name is Zac
           </span>
-        </h1>
+        </motion.h1>
         <div className="flex flex-col items-center gap-2">
           <p className="text-2xl text-neutral-600 dark:text-neutral-400">
             and I am a
@@ -29,9 +35,10 @@ export default function Page() {
               text={[
                 "Full-Stack Developer",
                 "GenAI Engineer",
-                "Tinkerer"
+                "Tinkerer",
+                "Digital Nomad"
               ]}
-              speed={50}
+              speed={60}
               waitTime={1500}
             />
           </div>
