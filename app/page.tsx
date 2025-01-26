@@ -28,8 +28,7 @@ export default function Page() {
             text={[
               "Full-Stack Developer",
               "GenAI Engineer",
-              "Tinkerer",
-              "Digital Nomad"
+              "Tinkerer"
             ]}
             speed={60}
             waitTime={1500}
