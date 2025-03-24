@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { AnimatedGridPattern } from "../components/ui/animated-grid-pattern"
 import { SocialLinks } from "../components/socialLinks"
 import { PostCard, PostCardBody } from "../components/ui/postCard"
 
@@ -131,14 +130,6 @@ export default function Page() {
 
   return (
     <section className="max-w-3xl mx-auto text-center">
-      <AnimatedGridPattern
-        numSquares={33}
-        maxOpacity={0.04}
-        duration={3}
-        repeatDelay={1}
-        className="fixed inset-0 h-full w-full -z-10"
-      />
-
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">About Me</h1>
         <p className="text-lg leading-relaxed">
