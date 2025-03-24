@@ -2,9 +2,7 @@ import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
-import { TableOfContents } from 'app/components/TableOfContents'
 import { CommentSection } from 'app/components/bluesky-comments'
-import { AnimatedGridPattern } from "../../components/ui/animated-grid-pattern"
 
 const tagKeywords = {
   edu: [
@@ -31,10 +29,10 @@ export async function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }) {
+export function generateMetadata({ params }: { params: { slug: string } }) {
   let post = getBlogPosts().find((post) => post.slug === params.slug)
   if (!post) {
-    return
+    return {}
   }
 
   let {
@@ -81,7 +79,7 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
+export default function Blog({ params }: { params: { slug: string } }) {
   let post = getBlogPosts().find((post) => post.slug === params.slug)
 
   if (!post) {
@@ -94,14 +92,6 @@ export default function Blog({ params }) {
         {/* Main content */}
         <section className="w-full lg:w-3/4 xl:w-4/5">
 
-        <AnimatedGridPattern
-          numSquares={33}
-          maxOpacity={0.03}
-          duration={3}
-          repeatDelay={1}
-          className="fixed inset-0 h-full w-full -z-10"
-        />
-
           <h1 className="title font-semibold text-2xl sm:text-3xl md:text-4xl tracking-tighter mb-4">
             {post.metadata.title}
           </h1>
@@ -110,12 +100,8 @@ export default function Blog({ params }) {
               {formatDate(post.metadata.publishedAt)}
             </p>
           </div>
-          
-          {/* Mobile ToC placed here */}
-          <div className="lg:hidden">
-            <TableOfContents content={post.content} />
-          </div>
-          
+
+
           <article className="prose prose-lg dark:prose-invert">
             <CustomMDX source={post.content} />
           </article>
@@ -126,13 +112,7 @@ export default function Blog({ params }) {
             </div>
           )}
         </section>
-        
-        {/* Table of Contents */}
-        <aside className="hidden lg:block lg:w-1/4 xl:w-1/5 lg:pl-8">
-          <div className="sticky top-32">
-            <TableOfContents content={post.content} />
-          </div>
-        </aside>
+
       </div>
 
       {/* Schema.org metadata */}

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
-import { GradientCard, GradientCardBody } from './ui/gradient-card'
+import { PostCard, PostCardBody } from './ui/postCard'
 
 export function RecentPosts() {
   let allBlogs = getBlogPosts()
@@ -22,8 +22,8 @@ export function RecentPosts() {
               href={`/blog/${post.slug}`}
               className="no-underline"
             >
-              <GradientCard>
-                <GradientCardBody className="p-4">
+              <PostCard>
+                <PostCardBody className="p-4">
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between">
                       <div className="text-xs italic text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
@@ -37,8 +37,8 @@ export function RecentPosts() {
                       {post.metadata.title}
                     </h2>
                   </div>
-                </GradientCardBody>
-              </GradientCard>
+                </PostCardBody>
+              </PostCard>
             </Link>
           ))}
       </div>
