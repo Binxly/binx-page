@@ -1,5 +1,5 @@
 import { Instagram, Github, Linkedin, Rss } from 'lucide-react'
-import { GradientCard, GradientCardBody } from './ui/gradient-card'
+import { PostCard, PostCardBody } from './ui/postCard'
 
 interface SocialLinksProps {
   className?: string;
@@ -45,12 +45,12 @@ export function SocialLinks({ className = "", hide = [] }: SocialLinksProps) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <GradientCard size="sm">
-            <GradientCardBody className="flex items-center justify-center gap-2 p-3">
+          <PostCard size="sm">
+            <PostCardBody className="flex items-center justify-center gap-2 p-3">
               <link.icon className="h-5 w-5" />
               <span className="text-sm font-medium">{link.label}</span>
-            </GradientCardBody>
-          </GradientCard>
+            </PostCardBody>
+          </PostCard>
         </a>
       ))}
     </div>

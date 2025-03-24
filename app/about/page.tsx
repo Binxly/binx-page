@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { AnimatedGridPattern } from "../components/ui/animated-grid-pattern"
 import { SocialLinks } from "../components/socialLinks"
-import { GradientCard, GradientCardBody } from "../components/ui/gradient-card"
+import { PostCard, PostCardBody } from "../components/ui/postCard"
 
 export const metadata: Metadata = {
   title: 'About Me | Binx',
@@ -79,7 +79,7 @@ export default function Page() {
   ]
 
   const skills = [
-    "GenAI", "RAG Applications", "PyTorch", "Diffusers", 
+    "GenAI", "RAG Applications", "PyTorch", "Diffusers",
     "Vector Search", "LLMs", "Computer Vision", "NLP",
     "AWS", "Azure", "Python", "TypeScript", "Next.js",
     "React", "Git", "Active Directory", "Windows",
@@ -119,7 +119,7 @@ export default function Page() {
   ]
 
   const interests = [
-    "Writing", "Digital Art", "Deep Learning","Game Development", 
+    "Writing", "Digital Art", "Deep Learning", "Game Development",
     "Personal Knowledge Management", "Star Trek"
   ]
 
@@ -142,17 +142,17 @@ export default function Page() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">About Me</h1>
         <p className="text-lg leading-relaxed">
-          I build AI-powered applications with a focus on computer vision and natural language processing. 
-          My background is formally in networking and cybersecurity, while self-studying programming and deep learning since 2019. 
+          I build AI-powered applications with a focus on computer vision and natural language processing.
+          My background is formally in networking and cybersecurity, while self-studying programming and deep learning since 2019.
           I'm currently working on developing large-scale data solutions that bridge dynamic client needs with emerging technologies.
         </p>
       </div>
-      
+
       <div className="space-y-12 text-left">
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Work Experience</h2>
           {workExperience.map((job, index) => (
-            <GradientCard key={index} className="mb-4">
+            <PostCard key={index} className="mb-4">
               <details className="group [&>summary::-webkit-details-marker]:hidden [&>summary::marker]:hidden">
                 <summary className="font-semibold text-xl cursor-pointer list-none p-6">
                   <div className="flex justify-between items-center">
@@ -165,11 +165,11 @@ export default function Page() {
                     <span className="text-neutral-500 transform group-open:rotate-180 transition-transform duration-200">▼</span>
                   </div>
                 </summary>
-                <GradientCardBody>
+                <PostCardBody>
                   <ul className="space-y-3">
                     {job.bullets.map((bullet, bulletIndex) => (
-                      <li 
-                        key={bulletIndex} 
+                      <li
+                        key={bulletIndex}
                         className="flex items-center gap-3 text-neutral-600 dark:text-neutral-400"
                       >
                         <div className="h-4 w-[2px] bg-violet-400 dark:bg-violet-600 shrink-0" />
@@ -177,19 +177,19 @@ export default function Page() {
                       </li>
                     ))}
                   </ul>
-                </GradientCardBody>
+                </PostCardBody>
               </details>
-            </GradientCard>
+            </PostCard>
           ))}
         </div>
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Skills</h2>
-          <GradientCard>
-            <GradientCardBody>
+          <PostCard>
+            <PostCardBody>
               <div className="flex flex-wrap justify-center gap-2">
                 {skills.map((skill, index) => (
-                  <span 
+                  <span
                     key={index}
                     className="text-sm px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full"
                   >
@@ -197,14 +197,14 @@ export default function Page() {
                   </span>
                 ))}
               </div>
-            </GradientCardBody>
-          </GradientCard>
+            </PostCardBody>
+          </PostCard>
         </div>
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Education</h2>
-          <GradientCard>
-            <GradientCardBody>
+          <PostCard>
+            <PostCardBody>
               <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-8">
                 <div className="flex-1 text-center md:text-left">
                   <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
@@ -217,14 +217,14 @@ export default function Page() {
                     {education.specialization}
                   </p>
                 </div>
-                
+
                 <div className="flex-1">
                   <h4 className="text-lg font-medium text-neutral-800 dark:text-neutral-200 mb-3">
                     Key Studies
                   </h4>
                   <ul className="space-y-3">
                     {education.keyStudies.map((study, index) => (
-                      <li 
+                      <li
                         key={index}
                         className="flex items-center gap-3 text-neutral-600 dark:text-neutral-400"
                       >
@@ -235,20 +235,20 @@ export default function Page() {
                   </ul>
                 </div>
               </div>
-            </GradientCardBody>
-          </GradientCard>
+            </PostCardBody>
+          </PostCard>
         </div>
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Certifications</h2>
           <div className="space-y-4">
-            <a 
-              href={contact.bootdev} 
-              target="_blank" 
+            <a
+              href={contact.bootdev}
+              target="_blank"
               rel="noopener noreferrer"
             >
-              <GradientCard>
-                <GradientCardBody>
+              <PostCard>
+                <PostCardBody>
                   <div className="flex justify-between items-center">
                     <div>
                       <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">Boot.dev Profile</h3>
@@ -256,13 +256,13 @@ export default function Page() {
                     </div>
                     <span className="text-neutral-500">→</span>
                   </div>
-                </GradientCardBody>
-              </GradientCard>
+                </PostCardBody>
+              </PostCard>
             </a>
-            
+
             {certifications.map((cert, index) => (
-              <GradientCard key={index}>
-                <GradientCardBody>
+              <PostCard key={index}>
+                <PostCardBody>
                   <div className="flex justify-between items-center">
                     <div>
                       <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">{cert.title}</h3>
@@ -271,7 +271,7 @@ export default function Page() {
                       </p>
                     </div>
                     {cert.link !== "#" && (
-                      <a 
+                      <a
                         href={cert.link}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -281,8 +281,8 @@ export default function Page() {
                       </a>
                     )}
                   </div>
-                </GradientCardBody>
-              </GradientCard>
+                </PostCardBody>
+              </PostCard>
             ))}
             <p className="text-[10px] text-neutral-500 dark:text-neutral-500 text-center mt-2">
               * certification links available upon request
@@ -292,11 +292,11 @@ export default function Page() {
 
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Interests</h2>
-          <GradientCard>
-            <GradientCardBody>
+          <PostCard>
+            <PostCardBody>
               <div className="flex flex-wrap justify-center gap-2">
                 {interests.map((interest, index) => (
-                  <span 
+                  <span
                     key={index}
                     className="text-sm px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full"
                   >
@@ -304,8 +304,8 @@ export default function Page() {
                   </span>
                 ))}
               </div>
-            </GradientCardBody>
-          </GradientCard>
+            </PostCardBody>
+          </PostCard>
         </div>
 
         <div>
