@@ -1,7 +1,6 @@
 import { RecentPosts } from './components/recentPosts'
 import { Typewriter } from "./components/typewriter"
 import { AnimatedGridPattern } from "./components/ui/animated-grid-pattern"
-import { SocialLinks } from "./components/socialLinks"
 
 export default function Page() {
   return (
@@ -23,10 +22,10 @@ export default function Page() {
             I am a
           </p>
           <div className="text-2xl text-violet-400 font-semibold">
-            <Typewriter 
+            <Typewriter
               text={[
                 "Full-Stack Developer",
-                "GenAI Engineer",
+                "GenAI Systems Engineer",
                 "Tinkerer"
               ]}
               speed={60}
@@ -37,11 +36,9 @@ export default function Page() {
       </div>
 
       <p className="mb-8 text-lg leading-relaxed">
-        I'm an indie full-stack developer and generative model fine-tuner. You can find my 
-        generative fine-tuning results on Instagram, <a href="https://www.instagram.com/binx.ly" className="text-violet-400 hover:text-violet-300" target="_blank" rel="noopener noreferrer">@binx.ly</a>; 
-        my links can all be found in my footer! When I'm not reading or working 
-        on personal projects, you'll find me experimenting with new tech, tweaking my 
-        Arch (btw) configuration, or collaborating with technology enthusiasts online.
+        I'm an indie full-stack developer and generative model fine-tuner. You can find my
+        generative fine-tuning results on Instagram, linked at the bottom of the page. I am passionate
+        about experimenting with new things and collaborating with other technology enthusiasts online.
       </p>
 
       <div className="my-8">
@@ -54,11 +51,17 @@ export default function Page() {
 
 export const metadata = {
   keywords: [
-    'AI engineer', 
-    'deep learning', 
-    'GenAI', 
-    'software development', 
+    'AI engineer',
+    'deep learning',
+    'GenAI',
+    'software development',
     'Python developer',
+    'Full Stack Developer',
+    'Application Engineer',
+    'SWE',
+    'SWE Blog',
+    'ML Blog',
+    'Developer portfolio',
     'open source'
   ],
 }
