@@ -1,18 +1,9 @@
 import { RecentPosts } from './components/recentPosts'
 import { Typewriter } from "./components/typewriter"
-import { AnimatedGridPattern } from "./components/ui/animated-grid-pattern"
 
 export default function Page() {
   return (
     <section className="max-w-3xl mx-auto text-center">
-      <AnimatedGridPattern
-        numSquares={33}
-        maxOpacity={0.04}
-        duration={3}
-        repeatDelay={1}
-        className="fixed inset-0 h-full w-full -z-10"
-      />
-
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2 text-neutral-900 dark:text-neutral-100">
           Hi, my name is Zac 👋
