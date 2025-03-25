@@ -87,9 +87,9 @@ export default function Page() {
   ]
 
   const education = {
-    degree: "A.A.S. in Computer Networking",
-    specialization: "Cybersecurity electives",
-    institution: " ",
+    degree: "Computer Networking",
+    specialization: " A.A.S.",
+    institution: "Cybersecurity electives",
     keyStudies: [
       "Foundations in System Administration",
       "Advanced Cisco Router Configuration",
