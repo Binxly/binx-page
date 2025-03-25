@@ -21,7 +21,7 @@ export function SocialLinks({ className = "", hide = [] }: SocialLinksProps) {
       id: 'github' as const
     },
     {
-      href: "https://www.linkedin.com/in/zac-bagley-4aa51417a/",
+      href: "https://www.linkedin.com/in/zac-bagley/",
       label: "LinkedIn",
       icon: Linkedin,
       id: 'linkedin' as const
