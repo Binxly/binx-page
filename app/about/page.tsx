@@ -33,14 +33,16 @@ export const metadata: Metadata = {
 export default function Page() {
   const workExperience = [
     {
-      title: "Full Stack Developer",
+      title: "GenAI Cloud Engineer",
       company: "LCG Inc",
-      period: "Oct 2024 - Present",
+      period: "Oct 2024 - Mar 2025",
       bullets: [
-        "Developing AI applications, largely focused on NLP solutions",
-        "Engineering cloud infrastructure and managing model deployments",
-        "Administering Windows enterprise environments",
-        "Implementing automated data pipelines leveraging cloud services"
+        "Official title: Full Stack Developer",
+        "Deployed GenAI models in Azure and AWS environments",
+        "Integrated API endpoints and vector storage at scale",
+        "Built Python environments using LangChain and Azure SDKs",
+        "Created vector databases integrated into Retrieval-Augmented Generation pipelines",
+        "Engineered tools allowing users to interface with AI for automated tasks"
       ]
     },
     {
@@ -48,25 +50,24 @@ export default function Page() {
       company: "LCG Inc",
       period: "Nov 2023 - Oct 2024",
       bullets: [
-        "Resolved Level 2 tickets for enterprise hardware and software issues",
+        "Resolved Level 2 tickets for enterprise hardware and software environments",
         "Managed Active Directory users and group policies",
         "Reviewed Cylance security reports and maintained compliance",
-        "Deployed workstations and VoIP phones",
-        "Wrote and updated Standard Operating Procedures (SOPs)"
+        "Contributed to and updated Standard Operating Procedures (SOPs)"
       ]
     },
     {
-      title: "Software and GenAI Systems Engineer",
+      title: "Founder and GenAI Systems Engineer",
       company: "BINXNET LLC",
       period: "Jun 2021 - Oct 2024",
       bullets: [
-        "Developed custom RAG applications and generative AI workflows",
-        "Built generative image pipelines using Python",
-        "Provided GenAI consulting and model fine-tuning services",
+        "Developed custom RAG applications using embeddings and vector databases",
+        "Built generative image pipelines using Python, PyTorch, and Diffusers",
+        "Provided consulting and generative model fine-tuning services",
       ]
     },
     {
-      title: "IT Specialist Intern",
+      title: "IT Specialist",
       company: "Spartanburg School District 5",
       period: "Jan 2016 - Jan 2017",
       bullets: [
@@ -86,9 +87,9 @@ export default function Page() {
   ]
 
   const education = {
-    degree: "A.A.S. in Computer Networking",
-    specialization: "Cybersecurity electives",
-    institution: "Spartanburg Community College",
+    degree: "Computer Networking",
+    specialization: " A.A.S.",
+    institution: "Cybersecurity electives",
     keyStudies: [
       "Foundations in System Administration",
       "Advanced Cisco Router Configuration",
@@ -97,6 +98,12 @@ export default function Page() {
   }
 
   const certifications = [
+    {
+      title: "AI Agent Fundamentals",
+      issuer: "Hugging Face",
+      date: "2025",
+      link: "#"
+    },
     {
       title: "Neural Networks and Deep Learning",
       issuer: "DeepLearning.AI",
@@ -133,11 +140,16 @@ export default function Page() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">About Me</h1>
         <p className="text-lg leading-relaxed">
-          I build AI-powered applications with a focus on computer vision and natural language processing.
-          My background is formally in networking and cybersecurity, while self-studying programming and deep learning since 2019.
-          I'm currently working on developing large-scale data solutions that bridge dynamic client needs with emerging technologies.
+          Self-study and professional experience.
         </p>
       </div>
+
+      <div>
+          <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
+          <div className="space-y-6">
+            <SocialLinks className="mb-4" hide={['rss']} />
+          </div>
+        </div>
 
       <div className="space-y-12 text-left">
         <div>
@@ -297,13 +309,6 @@ export default function Page() {
               </div>
             </PostCardBody>
           </PostCard>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
-          <div className="space-y-6">
-            <SocialLinks className="mb-4" hide={['rss']} />
-          </div>
         </div>
       </div>
     </section>

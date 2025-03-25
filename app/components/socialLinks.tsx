@@ -21,7 +21,7 @@ export function SocialLinks({ className = "", hide = [] }: SocialLinksProps) {
       id: 'github' as const
     },
     {
-      href: "https://www.linkedin.com/in/zac-bagley-4aa51417a/",
+      href: "https://www.linkedin.com/in/zac-bagley/",
       label: "LinkedIn",
       icon: Linkedin,
       id: 'linkedin' as const
@@ -37,18 +37,18 @@ export function SocialLinks({ className = "", hide = [] }: SocialLinksProps) {
   const visibleLinks = links.filter(link => !hide.includes(link.id));
 
   return (
-    <div className={`grid ${visibleLinks.length === 3 ? 'grid-cols-3' : 'grid-cols-4'} max-w-lg mx-auto gap-4 ${className}`}>
+    <div className={`grid ${visibleLinks.length === 3 ? 'grid-cols-3' : 'grid-cols-4'} max-w-md mx-auto gap-2 ${className}`}>
       {visibleLinks.map((link) => (
         <a
           key={link.href}
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={link.label}
         >
           <PostCard size="sm">
-            <PostCardBody className="flex items-center justify-center gap-2 p-3">
-              <link.icon className="h-5 w-5" />
-              <span className="text-sm font-medium">{link.label}</span>
+            <PostCardBody className="flex items-center justify-center p-2 transition-colors group">
+              <link.icon className="h-4 w-4 transition-all duration-200 group-hover:scale-125 group-hover:text-blue-500 dark:group-hover:text-blue-400" />
             </PostCardBody>
           </PostCard>
         </a>

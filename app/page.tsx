@@ -51,6 +51,7 @@ export default function Page() {
             <li><a href='https://gobyexample.com' className="hover:underline">Go</a></li>
             <li><a href='https://refactoring.guru/design-patterns/catalog' className="hover:underline">Design Patterns</a></li>
             <li><a href='https://www.deeplearning.ai/courses/deep-learning-specialization/' className="hover:underline">Sequence Models</a></li>
+            <li><a href='https://www.theodinproject.com/' className="hover:underline">The Odin Project</a></li>
           </ul>
         </div>
       </div>
