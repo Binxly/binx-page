@@ -144,6 +144,13 @@ export default function Page() {
         </p>
       </div>
 
+      <div>
+          <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
+          <div className="space-y-6">
+            <SocialLinks className="mb-4" hide={['rss']} />
+          </div>
+        </div>
+
       <div className="space-y-12 text-left">
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-center">Work Experience</h2>
@@ -302,13 +309,6 @@ export default function Page() {
               </div>
             </PostCardBody>
           </PostCard>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-semibold mb-6 text-center">Contact & Social</h2>
-          <div className="space-y-6">
-            <SocialLinks className="mb-4" hide={['rss']} />
-          </div>
         </div>
       </div>
     </section>
