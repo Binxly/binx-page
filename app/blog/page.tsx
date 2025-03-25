@@ -21,7 +21,7 @@ export default function Page() {
           A blog about things I learn, think about, and work on. 
           <br />
           <br />
-          RSS feed available <a href="https://www.binx.page/rss.xml"><u>here</u></a>.
+          RSS feed available <a href="https://www.binx.page/rss"><u>here</u></a>.
         </p>
       </div>
 
