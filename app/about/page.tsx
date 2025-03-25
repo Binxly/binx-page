@@ -42,7 +42,7 @@ export default function Page() {
         "Integrated API endpoints and vector storage at scale",
         "Built Python environments using LangChain and Azure SDKs",
         "Created vector databases integrated into Retrieval-Augmented Generation pipelines",
-        "Engineered tools that allowed non-technical users to interface with AI models for automated tasks"
+        "Engineered tools allowing users to interface with AI for automated tasks"
       ]
     },
     {
