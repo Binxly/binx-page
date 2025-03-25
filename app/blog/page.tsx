@@ -2,7 +2,7 @@ import { BlogPosts } from 'app/components/allPosts'
 
 export const metadata = {
   title: 'Binx Bytes',
-  description: 'This is a place where I write about things I am learning, things I am thinking about, or things I find interesting.',
+  description: 'A blog about things I learn, think about, and work on.',
   keywords: [
     'tech blog',
     'software engineering blog',
@@ -18,9 +18,10 @@ export default function Page() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Binx Bytes</h1>
         <p className="text-lg leading-relaxed">
-          This is a place where I write about things I'm learning, things I'm thinking about,
-          and things I'm working on. I'm trying to get better about writing more often, and
-          I'm hoping this will help.
+          A blog about things I learn, think about, and work on. 
+          <br />
+          <br />
+          RSS feed available <a href="https://www.binx.page/rss.xml"><u>here</u></a>.
         </p>
       </div>
 

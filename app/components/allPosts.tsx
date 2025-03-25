@@ -7,8 +7,8 @@ export function BlogPosts() {
 
   return (
     <div className="flex flex-col space-y-4">
-      <h1 className="text-lg font-semibold tracking-tighter">
-        👁️‍🗨️ Blog Posts
+      <h1 className="text-2xl font-semibold tracking-tighter">
+        👁️‍🗨️ All Posts
       </h1>
       <div className="grid gap-4">
         {allBlogs

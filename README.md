@@ -1,6 +1,6 @@
 # Personal Portfolio & Blog
 
-My portfolio and blog site built with Next.js, featuring MDX blog posts, SEO optimization, and dynamic content generation.
+My portfolio and blog site.
 
 ## Project Structure
 
@@ -19,12 +19,15 @@ My portfolio and blog site built with Next.js, featuring MDX blog posts, SEO opt
 
 ## Todo
 
+- [ ] ToC
+- [ ] global.css changes
+- [ ] About Page cleanup
 
+## Stack
 
-## Tech Stack
-
-- Next.js (App Router)
 - TypeScript
-- Tailwind CSS v4
+- Next.js
+- Tailwind CSS
 - MDX for blog posts
+- Bluesky for Comments
 - Vercel for deployment

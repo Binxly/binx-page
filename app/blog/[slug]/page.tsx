@@ -3,6 +3,8 @@ import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import { CommentSection } from 'app/components/bluesky-comments'
+import Link from 'next/link'
+import { PostCard, PostCardBody } from 'app/components/ui/postCard'
 
 const tagKeywords = {
   edu: [
@@ -105,6 +107,22 @@ export default function Blog({ params }: { params: { slug: string } }) {
           <article className="prose prose-lg dark:prose-invert">
             <CustomMDX source={post.content} />
           </article>
+
+          <div className="mt-8 mb-8">
+            <Link href="/blog">
+              <PostCard>
+                <PostCardBody>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">Return to Blog</h3>
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400">View all posts</p>
+                    </div>
+                    <span className="text-neutral-500">←</span>
+                  </div>
+                </PostCardBody>
+              </PostCard>
+            </Link>
+          </div>
 
           {post.metadata.blueskyUri && (
             <div className="mt-16">

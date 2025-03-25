@@ -27,13 +27,36 @@ export default function Page() {
       </div>
 
       <p className="mb-8 text-lg leading-relaxed">
-        I'm an indie full-stack developer and generative model fine-tuner. You can find my
-        generative fine-tuning results on Instagram, linked at the bottom of the page. I am passionate
-        about experimenting with new things and collaborating with other technology enthusiasts online.
+        Passionate about web technologies, generative deep learning, and open-source.
       </p>
 
-      <div className="my-8">
-        <h2 className="text-xl font-semibold mb-4">Recent Posts</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div className="space-y-4">
+          <p className='text-xl font-medium'>
+            🔭 Currently Working On
+          </p>
+          <ul className="custom-list-projects">
+            <li><a href='https://github.com/Binxly/binx-page' className="hover:underline">This website - TS with Next.js</a></li>
+            <li><a href='https://github.com/Binxly/monkey-interpreter' className="hover:underline">Monkey Interpreter - Go</a></li>
+            <li><a href='https://github.com/Binxly/Atomizer' className="hover:underline">Obsidian Plugin: Atomizer - TS</a></li>
+            <li><a href='https://github.com/Binxly/raidr' className="hover:underline">Discord Bot: Raidr - JS</a></li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <p className='text-xl font-medium'>
+            📚 Currently Learning
+          </p>
+          <ul className="custom-list-learning">
+            <li><a href='https://gobyexample.com' className="hover:underline">Go</a></li>
+            <li><a href='https://refactoring.guru/design-patterns/catalog' className="hover:underline">Design Patterns</a></li>
+            <li><a href='https://www.deeplearning.ai/courses/deep-learning-specialization/' className="hover:underline">Sequence Models</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-medium">👁️‍🗨️ Recent Posts</h2>
         <RecentPosts />
       </div>
     </section>
