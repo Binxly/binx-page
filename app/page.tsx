@@ -39,7 +39,7 @@ export default function Page() {
             <li><a href='https://github.com/Binxly/binx-page' className="hover:underline">This website - TS with Next.js</a></li>
             <li><a href='https://github.com/Binxly/monkey-interpreter' className="hover:underline">Monkey Interpreter - Go</a></li>
             <li><a href='https://github.com/Binxly/Atomizer' className="hover:underline">Obsidian Plugin: Atomizer - TS</a></li>
-            <li><a href='https://github.com/Binxly/raidr' className="hover:underline">Discord Bot: Raidr - JS</a></li>
+           <!-- <li><a href='https://github.com/Binxly/raidr' className="hover:underline">Discord Bot: Raidr - JS</a></li> -->
           </ul>
         </div>
 
