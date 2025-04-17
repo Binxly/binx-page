@@ -327,13 +327,3 @@ h6[id] {
 .custom-list li {
   @apply flex items-center space-x-2;
 }
-
-.custom-list-projects li::before {
-  content: "⟫ ";
-  @apply text-neutral-400 dark:text-neutral-600;
-}
-
-.custom-list-learning li::before {
-  content: "▹";
-  @apply text-neutral-400 dark:text-neutral-600;
-}
