@@ -186,7 +186,11 @@ exit
 This was my first time doing a manual DISM apply, but it was simple enough! Basically, I had to point DISM at the Windows image (split .swm files) on the ISO from my USB, and tell it to unpack into my new `W:` drive:
 
 ```bash
-dism /Apply-Image /ImageFile:D:\sources\install.swm /SWMFile:D:\sources\install*.swm /Index:1 /ApplyDir:W:\
+dism /Apply-Image \ 
+/ImageFile:D:\sources\install.swm \
+/SWMFile:D:\sources\install*.swm \
+/Index:1 \
+/ApplyDir:W:\
 ```
 
 > Replace D: with the correct USB drive letter
@@ -195,8 +199,12 @@ dism /Apply-Image /ImageFile:D:\sources\install.swm /SWMFile:D:\sources\install*
 >
 > [More info can be found here](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/dism-image-management-command-line-options-s14?view=windows-11#apply-image)
 
+If you're note sure whether index 1 is Home or Index 6 is Pro, run:
+
 ```bash
-dism /Get-WimInfo /WimFile:D:\sources\install.swm /SWMFile:D:\sources\install*.swm
+dism /Get-WimInfo \
+/WimFile:D:\sources\install.swm \
+/SWMFile:D:\sources\install*.swm
 ```
 
 #### E) Rebuild UEFI Boot Files
